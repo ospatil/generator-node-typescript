@@ -10,7 +10,7 @@ module.exports = function (grunt) {
       options: {
         skipBowerInstall: true,
         files: ['package.json'],
-        commitMessagePrefix: '',
+        commitMessagePrefix: 'Release v%VERSION%',
         pushTo: 'origin',
         commitFiles: ['-a']
       }
