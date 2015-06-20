@@ -1,0 +1,26 @@
+{
+  "name": "<%= appname %>",
+  "version": "0.0.0",
+  "description": "",
+  "license": "",
+  "repository": "",
+  "author": "",
+  "keywords": [
+    ""
+  ],
+  "files": [
+    "lib"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-tslint": "^3.0.2-beta",
+    "gulp-help": "^1.6.0",
+    "tslint": "2.*",
+    "gulp-jasmine": "^2.0.1",
+    "jasmine": "^2.3.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "generator-node-typescript",
+  "version": "0.1.0",
+  "description": "Yeoman generator for TypeScript, NodeJS and gulp",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "ospatil/generator-node-typescript",
+  "author": {
+    "name": "Omkar Patil",
+    "email": "ospatil@gmail.com",
+    "url": "https://github.com/ospatil"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "typescript",
+    "gulp",
+    "tsconfig",
+    "nodejs",
+    "iojs"
+  ],
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "lodash": "^3.9.3",
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "^0.19.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
