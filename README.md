@@ -27,9 +27,9 @@ Make a new directory and `cd` into it.
 ```
 mkdir my-new-project && cd $_
 ```
-Run `yo nodejs-typescript`.
+Run `yo node-typescript`.
 ```
-yo nodejs-typescript
+yo node-typescript
 ```
 Run `gulp --help` for information on available tasks.
 ```
