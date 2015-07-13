@@ -3,6 +3,7 @@ var tslint  = require('gulp-tslint');
 var exec    = require('child_process').exec;
 var jasmine = require('gulp-jasmine');
 var gulp    = require('gulp-help')(gulp);
+var dotbin  = require('dotbin');
 
 gulp.task('tslint', 'Lints all TypeScript source files', function(){
   return gulp.src('src/**/*.ts')
