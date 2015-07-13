@@ -4,8 +4,12 @@ var exec    = require('child_process').exec;
 var jasmine = require('gulp-jasmine');
 var gulp    = require('gulp-help')(gulp);
 
+var tsFilesGlob = (function(c) {
+  return c.filesGlob || c.files || '**/*.ts';
+})(require('./tsconfig.json'));
+
 gulp.task('tslint', 'Lints all TypeScript source files', function(){
-  return gulp.src('src/**/*.ts')
+  return gulp.src(tsFilesGlob)
   .pipe(tslint())
   .pipe(tslint.report('verbose'));
 });
