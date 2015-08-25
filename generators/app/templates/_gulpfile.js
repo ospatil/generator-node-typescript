@@ -4,6 +4,7 @@ var exec    = require('child_process').exec;
 var jasmine = require('gulp-jasmine');
 var gulp    = require('gulp-help')(gulp);
 var tsconfig = require('gulp-tsconfig-files');
+var dotbin  = require('dotbin');
 
 var tsFilesGlob = (function(c) {
   return c.filesGlob || c.files || '**/*.ts';
