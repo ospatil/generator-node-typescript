@@ -18,6 +18,7 @@
     "gulp-help": "^1.6.0",
     "tslint": "2.*",
     "gulp-jasmine": "^2.0.1",
+    "gulp-tsconfig-files": "0.0.2",
     "jasmine": "^2.3.1"
   },
   "engines": {
