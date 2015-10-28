@@ -1,4 +1,4 @@
-# TypeScript NodeJS Generator 
+# TypeScript NodeJS Generator
 [![Build Status](https://secure.travis-ci.org/ospatil/generator-node-typescript.png?branch=master)](https://travis-ci.org/ospatil/generator-node-typescript)
 [![npm version](https://badge.fury.io/js/generator-node-typescript.svg)](http://badge.fury.io/js/generator-node-typescript)
 
@@ -14,15 +14,16 @@ Tools and libraries I use -
 
 ## Usage
 
-Install `typescript`, `tslint`, `typescript-tools`, `tsd` and `generator-node-typescript` globally.
+Install `generator-node-typescript` globally.
 
 ```
-npm install -g typescript tslint typescript-tools tsd generator-node-typescript
+npm install -g generator-node-typescript
 ```
 
-> I don't actually need `typescript-tools` and `tsd` but these are great tools to have for working with TypeScript in editors like sublime and atom and I heartily recommend it.
+>I don't need `typescript-tools` and `tsd` but these are great tools to have for working with TypeScript in editors like sublime and atom and I heartily recommend them.
+>Though I install `typescript` and `tslint` locally to avoid global dependencies, installing them globally wouldn't be a bad idea at all.
 
-Make a new directory and `cd` into it. 
+Make a new directory and `cd` into it.
 
 ```
 mkdir my-new-project && cd $_
@@ -36,7 +37,9 @@ Run `gulp --help` for information on available tasks.
 gulp --help
 ```
 
->**A word about tsconfig.json** - *tsconfig.json* file uses *files* array to find the TypeScript source files to compile. Manually keeping updating the *files* array when new TypeScript files are created or deleted is a tedious task nobody would want to do. Fortunately, editor plugins like [atom-typescript](https://atom.io/packages/atom-typescript) and [ArcticTypescript for Sublime](https://github.com/Phaiax/ArcticTypescript) provide a *filesGlob* extension that takes care of this automatically. This extenstion will eventually make way into *tsconfig.json* [officially](https://github.com/Microsoft/TypeScript/issues/1927). In the mean time, make sure that you follow your editor plugin instructions, like for example, saving the *tsconfig.json* file in Sublime after adding or deleting a TypeScript source file.
+## Quick notes
+- I provide nice integration with [VSCode editor](https://code.visualstudio.com/). I configure the `gulp build` task as the default VSCode build task.
+- The `gulp build` task also updates _tsconfig/files_ section using _tsconfig/filesGlob_ before build so you don't have to do it manually.
 
 ## License
 
