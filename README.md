@@ -20,8 +20,8 @@ Install `generator-node-typescript` globally.
 npm install -g generator-node-typescript
 ```
 
-I don't need `typescript-tools` and `tsd` but these are great tools to have for working with TypeScript in editors like sublime and atom and I heartily recommend them.
-Though I install `typescript` and `tslint` locally to avoid global dependencies, installing them globally wouldn't be a bad idea at all.
+>I don't need `typescript-tools` and `tsd` but these are great tools to have for working with TypeScript in editors like sublime and atom and I heartily recommend them.
+>Though I install `typescript` and `tslint` locally to avoid global dependencies, installing them globally wouldn't be a bad idea at all.
 
 Make a new directory and `cd` into it.
 
