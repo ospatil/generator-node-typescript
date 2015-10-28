@@ -1,7 +1,7 @@
 {
   "name": "generator-node-typescript",
   "version": "0.8.1-rc",
-  "description": "Yeoman generator for TypeScript, NodeJS and gulp",
+  "description": "Yeoman generator for nodejs modules using typescript and gulp",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "ospatil/generator-node-typescript",
