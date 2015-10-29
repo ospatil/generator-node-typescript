@@ -6,8 +6,8 @@ var helpers = require('yeoman-generator').test;
 var os = require('os');
 
 describe('node-ts:app', function () {
-  //Needs 5 seconds for running tsd and tsd install node --save
-  this.timeout(5000);
+  //Needs only 5 seconds for running tsd and tsd install node --save but keeping it for 30 seconds for travis
+  this.timeout(30000);
   before(function (done) {
     helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({ skipInstall: true })
