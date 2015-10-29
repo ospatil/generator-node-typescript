@@ -16,17 +16,17 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "del": "2.0.2",
     "gulp": "^3.9.0",
-    "gulp-tslint": "^3.1",
     "gulp-help": "^1.6.0",
-    "tslint": "2.*",
+    "gulp-inject": "3.0.0",
     "gulp-jasmine": "^2.0.1",
+    "gulp-sequence": "0.4.1",
     "gulp-tsconfig-files": "0.0.2",
-    "typescript": "^1.5",
-    "dotbin": "^1.0.1",
+    "gulp-tslint": "^3.1",
     "jasmine": "^2.3.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12.0"
   }
 }
