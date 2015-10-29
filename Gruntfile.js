@@ -7,12 +7,14 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     sg_release: {
-      options: {
-        skipBowerInstall: true,
-        files: ['package.json'],
-        commitMessagePrefix: '',
-        pushTo: 'origin',
-        commitFiles: ['-a']
+      release: {
+        options: {
+          skipBowerInstall: true,
+          files: ['package.json'],
+          commitMessagePrefix: '',
+          pushTo: 'origin',
+          commitFiles: ['-a']
+        }
       }
     }
   });
