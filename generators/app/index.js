@@ -30,7 +30,6 @@ module.exports = yeoman.generators.Base.extend({
       this.directory('src', 'src');
       this.directory('test', 'test');
       this.directory('_vscode', '.vscode');
-      this.directory('typings', 'typings');
     },
 
     app: function () {
@@ -44,7 +43,8 @@ module.exports = yeoman.generators.Base.extend({
     projectfiles: function () {
       this.fs.copy(
         this.templatePath('_gulpfile.js'),
-        this.destinationPath('gulpfile.js')
+        this.destinationPath('gulpfile.js'),
+        { appname: _.kebabCase(path.basename(process.cwd())) }
         );
       this.fs.copy(
         this.templatePath('_tsconfig.json'),
@@ -73,8 +73,8 @@ module.exports = yeoman.generators.Base.extend({
     npmInstall: function () {
       var generator = this;
       generator.npmInstall(null, { skipInstall: this.options['skip-install'] }, function () {
-        generator.spawnCommandSync('tsd', ['init']); //tsd init
-        generator.spawnCommandSync('tsd', ['install', 'node', '--save']) //tsd install --save node
+        generator.spawnCommandSync('typings', ['init']); //typings init
+        generator.spawnCommandSync('typings', ['install', 'node', '--save', '--ambient']) //typings install --save node --ambient
       });
   }
   }
