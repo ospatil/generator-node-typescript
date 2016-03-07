@@ -35,7 +35,6 @@ describe('node-ts:app', function () {
   it('creates project files', function () {
     assert.file([
       '.vscode/tasks.json',
-      'typings/main.d.ts',
       'gulpfile.js',
       'tsconfig.json',
       'tslint.json',
