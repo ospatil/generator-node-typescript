@@ -5,20 +5,20 @@
 I'm a [Yeoman](http://yeoman.io) generator that allows you to create NodeJS modules using TypeScript. I let you quickly setup a project with latest available tools and best practices.
 Tools and libraries I use -
   - _tsc_ - for compiling TypeScript.
-  - _tsd_ - for TypeScript definition files management.
+  - _typings_ - for management of TypeScript definitions.
   - _tsconfig.json_ - for providing compiler options.
   - _tslint_ - for linting TypeScript source files.
   - [_gulp_](http://gulpjs.com/) - as a build system. You can carry out above tasks through gulp.
   - [_Jasmine 2_](http://jasmine.github.io/2.3/introduction.html) - for writing tests.
 
->You want to know if you can change any of these? Of course, why not? It is your module after all. I simply get down to business of generating, no questions asked. Once done, I get out of the way as if I were not there at all and you can do as you please!
+>You want to know if you can change any of these? Of course, why not? It is your module after all. I simply get down to business of generating, no questions asked. Once done, I get out of the way and you can do as you please!
 
 ## Usage
 
-Install `typescript tsd tslint generator-node-typescript` globally.
+Install `generator-node-typescript` globally.
 
 ```
-npm install -g typescript tsd tslint generator-node-typescript
+npm install -g generator-node-typescript
 ```
 
 Create a new directory and `cd` into it.
@@ -39,50 +39,20 @@ Here is the list of tasks available out of the box -
   _build          INTERNAL TASK - Compiles all TypeScript source files
   build           Compiles all TypeScript source files and updates module references
   clean           Cleans the generated js files from lib directory
-  gen_tsrefs      Generates the app.d.ts references file dynamically for all application *.ts files
+  gen-def         Generate a single .d.ts bundle containing external module declarations exported from TypeScript module files
   help            Display this help text.
   test            Runs the Jasmine test specs [build]
-  tsconfig_files  Update files section in tsconfig.json
   tslint          Lints all TypeScript source files
+  update-tsconfig Update files section in tsconfig.json
 ```
 
+## What's new in the latest release?
+- Switch to _typings_ as manager for TypeScript definitions. The TSD team has deprecated _tsd_ in favour of _typings_. You can find more information about _typings_ on [Github](https://github.com/typings/typings).
+- Integration of _dts-generator_ tool to generate a single .d.ts bundle containing external module declarations exported from TypeScript source files in the module.
+- No global dependencies. I install `typescript`, `tslint` and `typings` as local dev dependencies allowing you to freely use different versions of these tools for different modules.
+
 ## Additional notes
-- I provide nice integration with [VSCode editor](https://code.visualstudio.com/). I configure the `gulp build` task as the default VSCode build task.
-- The `gulp build` task also updates _tsconfig/files_ section using _tsconfig/filesGlob_ and generates _typings/app.d.ts_ references file dynamically
-for all the application *.ts files before build so you don't have to do it manually.
-
-## Development tips
-- The _tsd_ tool dynamically updates _typings/tsd.d.ts_ file for all type definitions you install through it. Also, the gulp *gen_tsrefs* task dynamically
-updates _typings/app.d.ts_ references file for all application *.ts. Therefore you just need to add references to these two files in any _.ts_ file and you
-are good to go with *tsc* compiler.
-- To keep on using the typical CommonJS exports and imports use the `export` and `inport` systax mentioned in the example below.
-
-  ```ts
-  class Greeter {
-    greeting: string;
-    constructor(message: string) {
-      this.greeting = message;
-    }
-    greet() {
-      return 'Bonjour, ' + this.greeting + '!';
-    }
-  }
-  //The following line is important, export like this allows you to use the old-style CommonJS export/import.
-  export = Greeter;
-
-  ```
-  This is how the above class can be used in some other file.
-
-  ```ts
-  /// <reference path="../typings/tsd.d.ts" />
-  /// <reference path="../typings/app.d.ts" />
-
-  import Greeter = require('./greeter');
-
-  const greeter = new Greeter('friend');
-  greeter.greet();
-
-  ```
+- I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure the `gulp build` task as the default VS Code build task.
 
 ## License
 
