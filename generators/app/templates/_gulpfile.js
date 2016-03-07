@@ -35,13 +35,12 @@ gulp.task('tslint', 'Lints all TypeScript source files', function () {
 });
 
 gulp.task('gen-def', 'Generate a single .d.ts bundle containing external module declarations exported from TypeScript module files', function (cb) {
-  dtsGenerator.default({
+  return dtsGenerator.default({
     name: appName,
     project: '.',
     out: './lib/' + appName + '.d.ts',
     exclude: ['node_modules/**/*.d.ts', 'typings/**/*.d.ts']
   });
-  console.log('Generated d.ts bundle.');
 });
 
 gulp.task('_build', 'INTERNAL TASK - Compiles all TypeScript source files', function (cb) {
