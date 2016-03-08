@@ -32,5 +32,6 @@
   },
   "engines": {
     "node": ">=2.0.0"
-  }
+  },
+  "typings": "./lib/<%= appname %>.d.ts"
 }
