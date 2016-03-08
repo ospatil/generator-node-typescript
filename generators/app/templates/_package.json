@@ -17,6 +17,7 @@
   "dependencies": {},
   "devDependencies": {
     "del": "2.0.2",
+    "dotbin": "^1.0",
     "dts-generator": "^1.7",
     "gulp": "^3.9.0",
     "gulp-help": "^1.6.0",
@@ -27,8 +28,7 @@
     "gulp-tslint": "^3.1",
     "jasmine": "^2.3.1",
     "tslint": "^3.5",
-    "typescript": "^1.8",
-    "typings": "^0.6"
+    "typescript": "^1.8"
   },
   "engines": {
     "node": ">=2.0.0"

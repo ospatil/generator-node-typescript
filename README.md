@@ -15,10 +15,10 @@ Tools and libraries I use -
 
 ## Usage
 
-Install `generator-node-typescript` globally.
+Install `generator-node-typescript`, `gulp-cli` and `typings` globally.
 
 ```
-npm install -g generator-node-typescript
+npm install -g generator-node-typescript gulp-cli typings
 ```
 
 Create a new directory and `cd` into it.
@@ -49,7 +49,7 @@ Here is the list of tasks available out of the box -
 ## What's new in the latest release?
 - Switch to _typings_ as manager for TypeScript definitions. The TSD team has deprecated _tsd_ in favour of _typings_. You can find more information about _typings_ on [Github](https://github.com/typings/typings).
 - Integration of _dts-generator_ tool to generate a single .d.ts bundle containing external module declarations exported from TypeScript source files in the module.
-- No global dependencies. I install `typescript`, `tslint` and `typings` as local dev dependencies allowing you to freely use different versions of these tools for different modules.
+- Less global dependencies. I install `typescript` and `tslint` as local dev dependencies allowing you to freely use different versions of these for different modules.
 
 ## Additional notes
 - I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure the `gulp build` task as the default VS Code build task.

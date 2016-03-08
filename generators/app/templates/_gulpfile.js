@@ -9,6 +9,7 @@ var inject = require('gulp-inject');
 var gulpSequence = require('gulp-sequence');
 var del = require('del');
 var dtsGenerator = require('dts-generator');
+require('dotbin');
 
 var tsFilesGlob = (function (c) {
   return c.filesGlob || c.files || '**/*.ts';
@@ -44,7 +45,7 @@ gulp.task('gen-def', 'Generate a single .d.ts bundle containing external module 
 });
 
 gulp.task('_build', 'INTERNAL TASK - Compiles all TypeScript source files', function (cb) {
-  exec('tsc', function (err, stdout, stderr) {
+  return exec('tsc', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
