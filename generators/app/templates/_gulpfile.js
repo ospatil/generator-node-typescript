@@ -8,29 +8,19 @@ var path = require('path');
 var inject = require('gulp-inject');
 var gulpSequence = require('gulp-sequence');
 var del = require('del');
-
-var typeDefsPath = (function (tsd) {
-  return tsd.path || 'typings';
-})(require('./tsd.json'));
+var dtsGenerator = require('dts-generator');
+require('dotbin');
 
 var tsFilesGlob = (function (c) {
   return c.filesGlob || c.files || '**/*.ts';
 })(require('./tsconfig.json'));
 
-gulp.task('tsconfig_files', 'Update files section in tsconfig.json', function () {
-  gulp.src(tsFilesGlob).pipe(tsconfig());
-});
+var appName = (function (p) {
+  return p.name;
+})(require('./package.json'));
 
-gulp.task('gen_tsrefs', 'Generates the app.d.ts references file dynamically for all application *.ts files', function () {
-  var target = gulp.src(path.join('.', typeDefsPath, 'app.d.ts'));
-  var sources = gulp.src([path.join('.', 'src', '**', '*.ts')], { read: false });
-  return target.pipe(inject(sources, {
-    starttag: '//{',
-    endtag: '//}',
-    transform: function (filepath) {
-      return '/// <reference path="..' + filepath + '" />';
-    }
-  })).pipe(gulp.dest(path.join('.', typeDefsPath)));
+gulp.task('update-tsconfig', 'Update files section in tsconfig.json', function () {
+  gulp.src(tsFilesGlob).pipe(tsconfig());
 });
 
 gulp.task('clean', 'Cleans the generated js files from lib directory', function () {
@@ -45,18 +35,40 @@ gulp.task('tslint', 'Lints all TypeScript source files', function () {
     .pipe(tslint.report('verbose'));
 });
 
+gulp.task('gen-def', 'Generate a single .d.ts bundle containing external module declarations exported from TypeScript module files', function (cb) {
+  return dtsGenerator.default({
+    name: appName,
+    project: '.',
+    out: './lib/' + appName + '.d.ts',
+    exclude: ['node_modules/**/*.d.ts', 'typings/**/*.d.ts']
+  });
+});
+
 gulp.task('_build', 'INTERNAL TASK - Compiles all TypeScript source files', function (cb) {
-  exec('tsc', function (err, stdout, stderr) {
+  exec('tsc --version', function (err, stdout, stderr) {
+    console.log('TypeScript ', stdout);
+    if (stderr) {
+      console.log(stderr);
+    }
+  });
+
+  return exec('tsc', function (err, stdout, stderr) {
     console.log(stdout);
-    console.log(stderr);
+    if (stderr) {
+      console.log(stderr);
+    }
     cb(err);
   });
 });
 
-//run tslint task, then run _tsconfig_files and _gen_tsrefs in parallel, then run _build
-gulp.task('build', 'Compiles all TypeScript source files and updates module references', gulpSequence('tslint', ['tsconfig_files', 'gen_tsrefs'], '_build'));
+//run tslint task, then run update-tsconfig and gen-def in parallel, then run _build
+gulp.task('build', 'Compiles all TypeScript source files and updates module references', gulpSequence('tslint', ['update-tsconfig', 'gen-def'], '_build'));
 
 gulp.task('test', 'Runs the Jasmine test specs', ['build'], function () {
   return gulp.src('test/*.js')
     .pipe(jasmine());
+});
+
+gulp.task('watch', 'Watches ts source files and runs build on change', function () {
+  gulp.watch('src/**/*.ts', ['build']);
 });
