@@ -43,13 +43,16 @@ Here is the list of tasks available out of the box -
   help            Display this help text.
   test            Runs the Jasmine test specs [build]
   tslint          Lints all TypeScript source files
-  update-tsconfig Update files section in tsconfig.json
+  update-tsconfig Update files section in tsconfig.json using filesGlob entries
+  watch           Watches ts source files and runs build on change
 ```
 
 ## What's new in the latest release?
+- Use of latest version of TypeScript(`^1.8`).
 - Switch to _typings_ as manager for TypeScript definitions. The TSD team has deprecated _tsd_ in favour of _typings_. You can find more information about _typings_ on [Github](https://github.com/typings/typings).
-- Integration of _dts-generator_ tool to generate a single .d.ts bundle containing external module declarations exported from TypeScript source files in the module.
-- Less global dependencies. I install `typescript` and `tslint` as local dev dependencies allowing you to freely use different versions of these for different modules.
+- Integration of _dts-generator_ tool to generate a single _.d.ts_ bundle containing external module declarations exported from TypeScript source files in the module. The package.json now declares _typings_ field that points to the single _.d.ts_ bundle. You can find more information about _typings_ field on [TypeScript Wiki](https://github.com/Microsoft/TypeScript/wiki/Typings-for-npm-packages).
+- Less global dependencies. `typescript` and `tslint` are now installed as local dev dependencies allowing you to freely use different versions of these for different modules.
+- Addition of _gulp watch_ task that watches ts source files and runs build on change.
 
 ## Additional notes
 - I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure the `gulp build` task as the default VS Code build task.
