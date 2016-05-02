@@ -15,10 +15,10 @@ Tools and libraries I use -
 
 ## Usage
 
-Install `generator-node-typescript`, `gulp-cli` and `typings` globally.
+Install `generator-node-typescript`, `gulp` and `typings` globally.
 
 ```
-npm install -g generator-node-typescript gulp-cli typings
+npm install -g generator-node-typescript gulp typings
 ```
 
 Create a new directory and `cd` into it.
