@@ -62,7 +62,9 @@ gulp.task('_build', 'INTERNAL TASK - Compiles all TypeScript source files', func
 });
 
 //run tslint task, then run update-tsconfig and gen-def in parallel, then run _build
-gulp.task('build', 'Compiles all TypeScript source files and updates module references', gulpSequence('tslint', ['update-tsconfig', 'gen-def'], '_build'));
+gulp.task('build', 'Compiles all TypeScript source files and updates module references', function(callback) {
+  gulpSequence('tslint', ['update-tsconfig', 'gen-def'], '_build')(callback);
+});
 
 gulp.task('test', 'Runs the Jasmine test specs', ['build'], function () {
   return gulp.src('test/*.js')
