@@ -74,7 +74,7 @@ module.exports = yeoman.generators.Base.extend({
       var generator = this;
       generator.npmInstall(null, { skipInstall: this.options['skip-install'] }, function () {
         generator.spawnCommandSync('typings', ['init']); //typings init
-        generator.spawnCommandSync('typings', ['install', 'node', '--save', '--ambient']) //typings install --save node --ambient
+        generator.spawnCommandSync('typings', ['install', 'dt~node', '--save', '--global']) //typings install --save dt~node --global
       });
   }
   }
