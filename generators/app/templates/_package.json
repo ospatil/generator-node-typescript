@@ -14,7 +14,9 @@
   "scripts": {
     "test": "gulp test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/node": "6.0.31"
+  },
   "devDependencies": {
     "del": "^2.2.1",
     "dotbin": "^1.0",
@@ -24,6 +26,7 @@
     "gulp-tslint": "^6.0",
     "jasmine": "^2.3.1",
     "tslint": "3.14.0-dev.1",
+    "tslint-microsoft-contrib": "^2.0.9",
     "typescript": "2.0.0"
   },
   "engines": {

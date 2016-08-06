@@ -9,7 +9,6 @@
     "removeComments": true
   },
   "filesGlob": [
-    "typings/main.d.ts",
     "src/**/*.ts"
   ],
   "files": [
