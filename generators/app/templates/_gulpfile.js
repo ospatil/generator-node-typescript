@@ -18,7 +18,7 @@ gulp.task('clean', 'Cleans the generated js files from lib directory', function 
   ]);
 });
 
-gulp.task('tslint', 'Lints all TypeScript source files', function () {
+gulp.task('lint', 'Lints all TypeScript source files', function () {
   return gulp.src(tsFilesGlob)
     .pipe(tslint({
       tslint: tslintCustom,
@@ -27,7 +27,7 @@ gulp.task('tslint', 'Lints all TypeScript source files', function () {
     .pipe(tslint.report());
 });
 
-gulp.task('build', 'Compiles all TypeScript source files', ['tslint'], function (cb) {
+gulp.task('build', 'Compiles all TypeScript source files', ['lint'], function (cb) {
   exec('tsc --version', function (err, stdout, stderr) {
     console.log('TypeScript ', stdout);
     if (stderr) {
@@ -50,7 +50,7 @@ gulp.task('test', 'Runs the Jasmine test specs', ['build'], function () {
       require: ['ts-node/register']
     }));
 });
-``
+
 gulp.task('watch', 'Watches ts source files and runs build on change', function () {
   gulp.watch(tsFilesGlob, ['build']);
 });

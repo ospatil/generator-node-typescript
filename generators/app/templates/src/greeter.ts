@@ -1,9 +1,11 @@
 export class Greeter {
-  greeting: string;
+  private greeting: string;
+
   constructor(message: string) {
     this.greeting = message;
   }
-  greet() {
-    return 'Bonjour, ' + this.greeting + '!';
+
+  public greet() {
+    return "Bonjour, " + this.greeting + "!";
   }
 };

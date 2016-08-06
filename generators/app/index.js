@@ -11,15 +11,15 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the amazing ' + chalk.red('Node TypeScript') + ' generator!'
+      'Welcome to the lean and mean ' + chalk.red('Node TypeScript') + ' generator!'
     ));
 
     this.log(
       chalk.cyan('I simply get down to business of generating, no questions asked!')
       + '\n'
-      + chalk.yellow('Libraries you ask? I use gulp, jasmine, tslint and I compile TypeScript to CommonJS modules using tsconfig.json.')
+      + chalk.yellow('Libraries you ask? I use npm (or optionally gulp) as task runner and mocha for testing.')
       + '\n'
-      + chalk.gray('Can you change these? Of course, it\'s your library. I get out of the way after scaffolding.')
+      + chalk.gray('Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.')
     );
 
     done();
@@ -29,23 +29,39 @@ module.exports = yeoman.generators.Base.extend({
     dir: function () {
       this.directory('src', 'src');
       this.directory('test', 'test');
-      this.directory('_vscode', '.vscode');
-    },
-
-    app: function () {
-      this.fs.copyTpl(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json'),
-        { appname: _.kebabCase(path.basename(process.cwd())) }
-      );
     },
 
     projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('_gulpfile.js'),
-        this.destinationPath('gulpfile.js'),
-        { appname: _.kebabCase(path.basename(process.cwd())) }
-      );
+      if (this.options.gulp) {
+        this.fs.copy(
+          this.templatePath('_vscode/tasks_gulp.json'),
+          this.destinationPath('.vscode/tasks.json')
+        );
+
+        this.fs.copyTpl(
+          this.templatePath('_package_gulp.json'),
+          this.destinationPath('package.json'),
+          { appname: _.kebabCase(path.basename(process.cwd())) }
+        );
+
+        this.fs.copy(
+          this.templatePath('_gulpfile.js'),
+          this.destinationPath('gulpfile.js'),
+          { appname: _.kebabCase(path.basename(process.cwd())) }
+        );
+      } else {
+        this.fs.copy(
+          this.templatePath('_vscode/tasks.json'),
+          this.destinationPath('.vscode/tasks.json')
+        );
+
+        this.fs.copyTpl(
+          this.templatePath('_package.json'),
+          this.destinationPath('package.json'),
+          { appname: _.kebabCase(path.basename(process.cwd())) }
+        );
+      }
+
       this.fs.copy(
         this.templatePath('_tsconfig.json'),
         this.destinationPath('tsconfig.json')
