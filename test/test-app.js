@@ -40,7 +40,6 @@ describe('node-ts:app', function () {
       'tslint.json',
       '.editorconfig',
       '.gitignore',
-      '.jshintrc'
     ]);
   });
 
