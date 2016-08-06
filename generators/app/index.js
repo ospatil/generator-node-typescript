@@ -12,7 +12,7 @@ module.exports = yeoman.generators.Base.extend({
     // Have Yeoman greet the user.
     this.log(yosay(
       'Welcome to the amazing ' + chalk.red('Node TypeScript') + ' generator!'
-      ));
+    ));
 
     this.log(
       chalk.cyan('I simply get down to business of generating, no questions asked!')
@@ -20,7 +20,7 @@ module.exports = yeoman.generators.Base.extend({
       + chalk.yellow('Libraries you ask? I use gulp, jasmine, tslint and I compile TypeScript to CommonJS modules using tsconfig.json.')
       + '\n'
       + chalk.gray('Can you change these? Of course, it\'s your library. I get out of the way after scaffolding.')
-      );
+    );
 
     done();
   },
@@ -37,7 +37,7 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
         { appname: _.kebabCase(path.basename(process.cwd())) }
-        );
+      );
     },
 
     projectfiles: function () {
@@ -45,23 +45,23 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_gulpfile.js'),
         this.destinationPath('gulpfile.js'),
         { appname: _.kebabCase(path.basename(process.cwd())) }
-        );
+      );
       this.fs.copy(
         this.templatePath('_tsconfig.json'),
         this.destinationPath('tsconfig.json')
-        );
+      );
       this.fs.copy(
         this.templatePath('_tslint.json'),
         this.destinationPath('tslint.json')
-        );
+      );
       this.fs.copy(
         this.templatePath('editorconfig'),
         this.destinationPath('.editorconfig')
-        );
+      );
       this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore')
-        );
+      );
     }
   },
 
@@ -72,6 +72,6 @@ module.exports = yeoman.generators.Base.extend({
         //generator.spawnCommandSync('typings', ['init']); //typings init
         //generator.spawnCommandSync('typings', ['install', 'dt~node', '--save', '--global']) //typings install --save dt~node --global
       });
-  }
+    }
   }
 });
