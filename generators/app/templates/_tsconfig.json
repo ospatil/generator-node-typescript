@@ -8,9 +8,6 @@
     "preserveConstEnums": true,
     "removeComments": true
   },
-  "filesGlob": [
-    "src/**/*.ts"
-  ],
   "include": [
     "src/**/*"
   ],
