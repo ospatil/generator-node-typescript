@@ -2,60 +2,87 @@
 [![Build Status](https://secure.travis-ci.org/ospatil/generator-node-typescript.png?branch=master)](https://travis-ci.org/ospatil/generator-node-typescript)
 [![npm version](https://badge.fury.io/js/generator-node-typescript.svg)](http://badge.fury.io/js/generator-node-typescript)
 
-I'm a [Yeoman](http://yeoman.io) generator that allows you to create NodeJS modules using TypeScript. I let you quickly setup a project with latest available tools and best practices.
-Tools and libraries I use -
-  - _tsc_ - for compiling TypeScript.
-  - _typings_ - for management of TypeScript definitions.
-  - _tsconfig.json_ - for providing compiler options.
-  - _tslint_ - for linting TypeScript source files.
-  - [_gulp_](http://gulpjs.com/) - as a build system. You can carry out above tasks through gulp.
-  - [_Jasmine 2_](http://jasmine.github.io/2.3/introduction.html) - for writing tests.
+> The information on this page is about my latest and greatest **2.0.0 beta** release for **TypeScript 2.0**. For my **1.x release for TypeScript 1.8**, refer to [readme file for 1.x release](./README-1x.md).
 
->You want to know if you can change any of these? Of course, why not? It is your module after all. I simply get down to business of generating, no questions asked. Once done, I get out of the way and you can do as you please!
+I'm a lean and mean [Yeoman](http://yeoman.io) generator for creating NodeJS modules using TypeScript. I let you quickly setup a project with latest available tools and best practices.
+
+I use:
+
+- _npm_ - as task runner. You can choose to use _gulp_ instead.
+- _tslint_ - as linter for TypeScript source files.
+- _mocha_ - as testing framework to write specs in **TypeScript** itself.
+
+You want to know if you can change any of these? Of course, why not? It is your module after all. I simply get down to business of generating, no questions asked. Once done, I get out of the way and you can do as you please!
 
 ## Usage
 
-Install `generator-node-typescript`, `gulp-cli` and `typings` globally.
+Install `generator-node-typescript` globally. If you are planning to use _gulp_, install `gulp-cli` globally too.
 
-```
-npm install -g generator-node-typescript gulp-cli typings
+```sh
+$npm install -g generator-node-typescript@beta
 ```
 
 Create a new directory and `cd` into it.
 
-```
-mkdir my-new-project && cd $_
-```
-Run `yo node-typescript`.
-```
-yo node-typescript
-```
-Run `gulp --help` for information on available tasks.
-```
-gulp --help
-```
-Here is the list of tasks available out of the box -
 ```sh
-  _build          INTERNAL TASK - Compiles all TypeScript source files
-  build           Compiles all TypeScript source files and updates module references
-  clean           Cleans the generated js files from lib directory
-  gen-def         Generate a single .d.ts bundle containing external module declarations exported from TypeScript module files
-  help            Display this help text.
-  test            Runs the Jasmine test specs [build]
-  tslint          Lints all TypeScript source files
-  update-tsconfig Update files section in tsconfig.json using filesGlob entries
-  watch           Watches ts source files and runs build on change
+$mkdir my-new-project && cd $_
+
 ```
 
-## What's new in the latest release?
-- Use of latest version of TypeScript(`^1.8`).
-- Switch to _typings_ as manager for TypeScript definitions. The TSD team has deprecated _tsd_ in favour of _typings_. You can find more information about _typings_ on [Github](https://github.com/typings/typings).
-- Integration of _dts-generator_ tool to generate a single _.d.ts_ bundle containing external module declarations exported from TypeScript source files in the module. The package.json now declares _typings_ field that points to the single _.d.ts_ bundle. You can find more information about _typings_ field on [TypeScript Wiki](https://github.com/Microsoft/TypeScript/wiki/Typings-for-npm-packages).
-- Less global dependencies. `typescript` and `tslint` are now installed as local dev dependencies allowing you to freely use different versions of these for different modules.
-- Addition of _gulp watch_ task that watches ts source files and runs build on change.
+Run the generator.
 
-## Additional notes
-- I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure the `gulp build` task as the default VS Code build task.
+```sh
+$yo node-typescript
+```
+
+> You can choose to use _gulp_ as your build system using command - `$yo node-typescript --gulp`
+
+Run `npm run` for information on available tasks.
+
+```sh
+ $npm run
+Lifecycle scripts included in new-node-ts:
+  test
+    npm run lint && mocha --require ts-node/register --recursive test/**/*-spec.ts
+
+available via `npm run-script`:
+  clean
+    rimraf lib
+  build
+    npm run clean && tsc --version && tsc --pretty
+  lint
+    npm run build && tslint --format verbose 'src/**/*.ts'
+  watch
+    npm run build -- --watch
+  watch:test
+    npm run test -- --watch
+```
+
+If you choose to use _gulp_, you can find the available tasks using command `gulp help`.
+
+```sh
+$gulp help
+
+Usage
+  gulp [TASK] [OPTIONS...]
+
+Available tasks
+  build  Compiles all TypeScript source files [lint]
+  clean  Cleans the generated js files from lib directory
+  help   Display this help text.
+  lint   Lints all TypeScript source files
+  test   Runs the Jasmine test specs [build]
+  watch  Watches ts source files and runs build on change
+```
+
+## Highlights of the latest release
+
+- I use **TypeScript 2.0**. I and **TypeScript 2.0** are both in **beta** together.
+- I use _npm_ to fetch type definitions making life so much easier. You can find more information on [https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/).
+- I use _mocha_ as testing framework as it allows easier test runs from command line. Also, one of the most important things regarding testing is **now you can write you tests in TypeScript itself**. The out-of-box configuration includes use of [ts-node](https://github.com/TypeStrong/ts-node) as mocha compiler allowing executing specs written in TypeScript without compiling them first.
+- The earlier version (1.x) had _dts-generator_ tool integration in order to generate a single _.d.ts_ bundle combining external module declarations from all TypeScript source files in the module and _typings_ field in _package.json_ pointing to the single _.d.ts_ bundle to make life easier for library authors. But it's no longer necessary owing to [TypeScript Module Resolution Logic](https://www.typescriptlang.org/docs/handbook/module-resolution.html) and hence removed.
+- I need **no global dependencies**. Every dependency such as _TypeScript_ and _tslint_ is installed as local dev dependency allowing you to freely use different versions of these for different modules.
+- I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure `build`, `clean`, `lint` and `test` tasks that you can run using `Run Task` option.
 
 ## License
 
