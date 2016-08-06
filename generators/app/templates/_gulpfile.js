@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var tslint = require('gulp-tslint');
 var exec = require('child_process').exec;
-var jasmine = require('gulp-jasmine');
+var mocha = require('gulp-mocha');
 var gulp = require('gulp-help')(gulp);
 var path = require('path');
 var del = require('del');
@@ -9,7 +9,7 @@ var tslintCustom = require('tslint'); // for tslint-next https://github.com/panu
 require('dotbin');
 
 var tsFilesGlob = (function (c) {
-  return c.filesGlob || c.files || '**/*.ts';
+  return c.filesGlob || c.files || 'src/**/*.ts';
 })(require('./tsconfig.json'));
 
 gulp.task('clean', 'Cleans the generated js files from lib directory', function () {
@@ -22,7 +22,7 @@ gulp.task('tslint', 'Lints all TypeScript source files', function () {
   return gulp.src(tsFilesGlob)
     .pipe(tslint({
       tslint: tslintCustom,
-      formatter: "verbose"
+      formatter: 'verbose'
     }))
     .pipe(tslint.report());
 });
@@ -45,10 +45,12 @@ gulp.task('build', 'Compiles all TypeScript source files', ['tslint'], function 
 });
 
 gulp.task('test', 'Runs the Jasmine test specs', ['build'], function () {
-  return gulp.src('test/*.js')
-    .pipe(jasmine());
+  return gulp.src('test/*.ts')
+    .pipe(mocha({
+      require: ['ts-node/register']
+    }));
 });
-
+``
 gulp.task('watch', 'Watches ts source files and runs build on change', function () {
-  gulp.watch('src/**/*.ts', ['build']);
+  gulp.watch(tsFilesGlob, ['build']);
 });
