@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && tsc --version && tsc --pretty",
+    "build": "npm run clean && echo TypeScript && tsc --version && tsc --pretty",
     "test": "npm run lint && mocha --require ts-node/register --recursive test/**/*-spec.ts",
     "lint": "npm run build && tslint --format verbose 'src/**/*.ts'",
     "watch": "npm run build -- --watch",

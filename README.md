@@ -4,7 +4,7 @@
 
 > The information on this page is about my latest and greatest **2.0.0 beta** release for **TypeScript 2.0**. For my **1.x release for TypeScript 1.8**, refer to [readme file for 1.x release](./README-1x.md).
 
-I'm a lean and mean [Yeoman](http://yeoman.io) generator for creating NodeJS modules using TypeScript. I let you quickly setup a project with latest available tools and best practices.
+I'm a minimal [Yeoman](http://yeoman.io) generator for creating NodeJS modules using TypeScript. I let you quickly setup a project with latest available tools and best practices.
 
 I use:
 
@@ -35,7 +35,7 @@ Run the generator.
 $yo node-typescript
 ```
 
-> You can choose to use _gulp_ as your build system using command - `$yo node-typescript --gulp`
+You can choose to use _gulp_ as your build system using command - `$yo node-typescript --gulp`
 
 Run `npm run` for information on available tasks.
 

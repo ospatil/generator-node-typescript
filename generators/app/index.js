@@ -11,7 +11,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the lean and mean ' + chalk.red('Node TypeScript') + ' generator!'
+      'Welcome to the minimal ' + chalk.red('Node TypeScript') + ' generator!'
     ));
 
     this.log(
@@ -28,7 +28,14 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     dir: function () {
       this.directory('src', 'src');
-      this.directory('test', 'test');
+
+      // 2.0.0-beta: copying the spec file needs templating due to the ts-node problem on windows
+      // this.directory('test', 'test');
+      this.fs.copyTpl(
+        this.templatePath('test/greeter-spec.ts'),
+        this.destinationPath('test/greeter-spec.ts'),
+        { isWindows: process.platform === 'win32' }
+      );
     },
 
     projectfiles: function () {
