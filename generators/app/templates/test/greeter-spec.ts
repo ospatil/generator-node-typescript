@@ -1,4 +1,6 @@
-<% if (isWindows) { %><reference path="../node_modules/@types/mocha/index.d.ts" /><% } %>
+<% if (isWindows) { %>
+/// <reference path="../node_modules/@types/mocha/index.d.ts" />
+<% } %>
 import { Greeter } from "../src/greeter";
 import * as chai from "chai";
 
