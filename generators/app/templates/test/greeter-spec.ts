@@ -1,11 +1,12 @@
-import { Greeter } from '../src/greeter';
-import * as chai from 'chai';
+<% if (isWindows) { %><reference path="../node_modules/@types/mocha/index.d.ts" /><% } %>
+import { Greeter } from "../src/greeter";
+import * as chai from "chai";
 
-var expect = chai.expect;
+const expect = chai.expect;
 
-describe('greeter', () => {
-  it('should greet with message', () => {
-    var greeter = new Greeter('friend');
-    expect(greeter.greet()).to.equal('Bonjour, friend!');
+describe("greeter", () => {
+  it("should greet with message", () => {
+    const greeter = new Greeter("friend");
+    expect(greeter.greet()).to.equal("Bonjour, friend!");
   });
 });
