@@ -2,7 +2,7 @@
 [![Build Status](https://secure.travis-ci.org/ospatil/generator-node-typescript.png?branch=master)](https://travis-ci.org/ospatil/generator-node-typescript)
 [![npm version](https://badge.fury.io/js/generator-node-typescript.svg)](http://badge.fury.io/js/generator-node-typescript)
 
-> The information on this page is about my latest and greatest **2.0.0 beta** release for **TypeScript 2.0**. For my **1.x release for TypeScript 1.8**, refer to [readme file for 1.x release](./README-1x.md).
+> The information on this page is about my latest and greatest **2.0.0-rc** release for **TypeScript 2.0**. For my **1.x release for TypeScript 1.8**, refer to [readme file for 1.x release](./README-1x.md).
 
 I'm a minimal [Yeoman](http://yeoman.io) generator for creating NodeJS modules using TypeScript. I let you quickly setup a project with latest available tools and best practices.
 
@@ -16,7 +16,7 @@ You want to know if you can change any of these? Of course, why not? It is your 
 
 ## Usage
 
-Install `generator-node-typescript` globally. If you are planning to use _gulp_, install `gulp-cli` globally too.
+Install `generator-node-typescript` globally. If you are planning to use _gulp_, install `gulp-cli` globally.
 
 ```sh
 $npm install -g generator-node-typescript
@@ -77,7 +77,7 @@ Available tasks
 
 ## Highlights of the latest release
 
-- I use **TypeScript 2.0**. I and **TypeScript 2.0** are both in **beta** together.
+- I use **TypeScript 2.0**.
 - I use _npm_ to fetch type definitions making life so much easier. You can find more information on [https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/).
 - I use _mocha_ as testing framework as it allows easier test runs from command line. Also, one of the most important things regarding testing is **now you can write tests in TypeScript itself**. The out-of-box configuration includes use of [ts-node](https://github.com/TypeStrong/ts-node) as mocha compiler allowing executing specs written in TypeScript without compiling them first.
 - The earlier version (1.x) had _dts-generator_ tool integration in order to generate a single _.d.ts_ bundle combining external module declarations from all TypeScript source files in the module and _typings_ field in _package.json_ pointing to the single _.d.ts_ bundle to make life easier for library authors. But it's no longer necessary owing to [TypeScript Module Resolution Logic](https://www.typescriptlang.org/docs/handbook/module-resolution.html) and hence removed.
