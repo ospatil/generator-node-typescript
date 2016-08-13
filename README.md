@@ -19,7 +19,7 @@ You want to know if you can change any of these? Of course, why not? It is your 
 Install `generator-node-typescript` globally. If you are planning to use _gulp_, install `gulp-cli` globally too.
 
 ```sh
-$npm install -g generator-node-typescript@beta
+$npm install -g generator-node-typescript
 ```
 
 Create a new directory and `cd` into it.
