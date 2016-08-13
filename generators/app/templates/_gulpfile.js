@@ -29,7 +29,7 @@ gulp.task('lint', 'Lints all TypeScript source files', function () {
 
 gulp.task('build', 'Compiles all TypeScript source files', ['lint'], function (cb) {
   exec('tsc --version', function (err, stdout, stderr) {
-    console.log('TypeScript ', stdout);
+    console.log('Using TypeScript ', stdout);
     if (stderr) {
       console.log(stderr);
     }
