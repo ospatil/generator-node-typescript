@@ -70,6 +70,10 @@ module.exports = yeoman.generators.Base.extend({
       }
 
       this.fs.copy(
+          this.templatePath('_vscode/settings.json'),
+          this.destinationPath('.vscode/settings.json')
+      );
+      this.fs.copy(
         this.templatePath('_tsconfig.json'),
         this.destinationPath('tsconfig.json')
       );
