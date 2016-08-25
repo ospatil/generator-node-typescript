@@ -18,6 +18,7 @@ describe('node-typescript:app with gulp', function () {
   it('creates necessary files', function () {
     assert.file([
       '.vscode/tasks.json',
+      '.vscode/settings.json',
       'src/greeter.ts',
       'src/index.ts',
       'test/greeter-spec.ts',
@@ -45,6 +46,7 @@ describe('node-typescript:app without gulp', function () {
   it('creates project files', function () {
     assert.file([
       '.vscode/tasks.json',
+      '.vscode/settings.json',
       'src/greeter.ts',
       'src/index.ts',
       'test/greeter-spec.ts',
