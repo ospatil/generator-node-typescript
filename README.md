@@ -41,17 +41,17 @@ Run `npm run` for information on available tasks.
 
 ```sh
  $npm run
-Lifecycle scripts included in new-node-ts:
+Lifecycle scripts included in node-ts:
   test
-    npm run lint && mocha --require ts-node/register --recursive test/**/*-spec.ts
+    npm run build && mocha --compilers ts:ts-node/register --recursive test/**/*-spec.ts
 
 available via `npm run-script`:
   clean
     rimraf lib
-  build
-    npm run clean && tsc --version && tsc --pretty
   lint
-    npm run build && tslint --format verbose 'src/**/*.ts'
+    tslint --format verbose 'src/**/*.ts'
+  build
+    npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty
   watch
     npm run build -- --watch
   watch:test
