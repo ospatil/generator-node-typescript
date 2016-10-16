@@ -28,6 +28,7 @@ describe('node-typescript:app with gulp', function () {
       'tslint.json',
       '.editorconfig',
       '.gitignore',
+      'LICENSE',
       'README.md'
     ]);
   });
@@ -55,6 +56,7 @@ describe('node-typescript:app without gulp', function () {
       'tslint.json',
       '.editorconfig',
       '.gitignore',
+      'LICENSE',
       'README.md'
     ]);
   });

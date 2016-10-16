@@ -39,6 +39,8 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     projectfiles: function () {
+      var today = new Date();
+
       if (this.options.gulp) {
         this.fs.copy(
           this.templatePath('_vscode/tasks_gulp.json'),
@@ -88,6 +90,11 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore')
+      );
+      this.fs.copyTpl(
+        this.templatePath('LICENSE'),
+        this.destinationPath('LICENSE'),
+        { year: today.getFullYear().toPrecision(4) }
       );
       this.fs.copy(
         this.templatePath('README.md'),
