@@ -36,6 +36,11 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('test/greeter-spec.ts'),
         { isWindows: process.platform === 'win32' }
       );
+      this.fs.copyTpl(
+        this.templatePath('test/index-spec.ts'),
+        this.destinationPath('test/index-spec.ts'),
+        { isWindows: process.platform === 'win32' }
+      );
     },
 
     projectfiles: function () {
