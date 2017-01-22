@@ -11,6 +11,7 @@ I use:
 - _npm_ - as task runner. You can choose to use _gulp_ instead.
 - _tslint_ - as linter for TypeScript source files.
 - _mocha_ - as testing framework to write specs in **TypeScript** itself.
+- _istanbul_ - a JavaScript code coverage tool working on TypeScript files.
 
 You want to know if you can change any of these? Of course, why not? It is your module after all. I simply get down to business of generating, no questions asked. Once done, I get out of the way and you can do as you please!
 
@@ -44,6 +45,8 @@ Run `npm run` for information on available tasks.
 Lifecycle scripts included in node-ts:
   test
     npm run build && mocha --compilers ts:ts-node/register --recursive test/**/*-spec.ts
+  coverage
+    nyc --reporter=text --reporter=html mocha --compilers ts:ts-node/register
 
 available via `npm run-script`:
   clean
