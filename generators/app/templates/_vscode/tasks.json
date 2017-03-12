@@ -16,6 +16,9 @@
       "taskName": "lint"
     },
     {
+      "taskName": "coverage"
+    },
+    {
       "taskName": "test",
       "isTestCommand": true
     }

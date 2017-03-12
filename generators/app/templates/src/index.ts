@@ -1,3 +1,1 @@
-import { Greeter } from "./greeter";
-
-export { Greeter };
+export * from "./greeter";

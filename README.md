@@ -55,6 +55,8 @@ available via `npm run-script`:
     tslint --format verbose 'src/**/*.ts'
   build
     npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty
+  coverage
+    nyc --reporter=text --reporter=html mocha --compilers ts:ts-node/register
   watch
     npm run build -- --watch
   watch:test
@@ -80,12 +82,12 @@ Available tasks
 
 ## Highlights of the latest release
 
-- I use **TypeScript 2.0**.
+- I use latest version of **TypeScript**.
 - I use _npm_ to fetch type definitions making life so much easier. You can find more information on [https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/).
 - I use _mocha_ as testing framework as it allows easier test runs from command line. Also, one of the most important things regarding testing is **now you can write tests in TypeScript itself**. The out-of-box configuration includes use of [ts-node](https://github.com/TypeStrong/ts-node) as mocha compiler allowing executing specs written in TypeScript without compiling them first.
-- The earlier version (1.x) had _dts-generator_ tool integration in order to generate a single _.d.ts_ bundle combining external module declarations from all TypeScript source files in the module and _typings_ field in _package.json_ pointing to the single _.d.ts_ bundle to make life easier for library authors. But it's no longer necessary owing to [TypeScript Module Resolution Logic](https://www.typescriptlang.org/docs/handbook/module-resolution.html) and hence removed.
 - I need **no global dependencies**. Every dependency such as _TypeScript_ and _tslint_ is installed as local dev dependency allowing you to freely use different versions of these for different modules.
-- I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure `build`, `clean`, `lint` and `test` tasks that you can run using `Run Task` option.
+- I provide test covergae support using _istanbul_.
+- I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure `build`, `clean`, `lint`, `coverage` and `test` tasks that you can run using `Run Task` option.
 
 ## License
 
