@@ -2,7 +2,7 @@
 [![Build Status](https://secure.travis-ci.org/ospatil/generator-node-typescript.png?branch=master)](https://travis-ci.org/ospatil/generator-node-typescript)
 [![npm version](https://badge.fury.io/js/generator-node-typescript.svg)](http://badge.fury.io/js/generator-node-typescript)
 
-> The information on this page is about my latest and greatest **2.0.0** release for **TypeScript 2.0**. For my **1.x release for TypeScript 1.8**, refer to [readme file for 1.x release](./README-1x.md).
+> For my 1.x release documentation for TypeScript 1.8, refer to [readme file for 1.x release](./README-1x.md).
 
 I'm a minimal [Yeoman](http://yeoman.io) generator for creating NodeJS modules using TypeScript. I let you quickly setup a project with latest available tools and best practices.
 
