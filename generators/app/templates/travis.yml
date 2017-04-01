@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - '6'
+  - '4'
+script:
+  - npm run build  # build
+  - npm run coverage  # run mocha unit tests with coverage
+after_script:
+  - 'cat coverage/lcov.info | ./node_modules/.bin/coveralls' # sends the coverage report to coveralls

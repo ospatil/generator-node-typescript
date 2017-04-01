@@ -74,11 +74,16 @@ module.exports = yeoman.generators.Base.extend({
           this.destinationPath('package.json'),
           { appname: _.kebabCase(path.basename(process.cwd())) }
         );
+
+        this.fs.copy(
+          this.templatePath('travis.yml'),
+          this.destinationPath('.travis.yml')
+        );
       }
 
       this.fs.copy(
-          this.templatePath('_vscode/settings.json'),
-          this.destinationPath('.vscode/settings.json')
+        this.templatePath('_vscode/settings.json'),
+        this.destinationPath('.vscode/settings.json')
       );
       this.fs.copy(
         this.templatePath('_tsconfig.json'),
