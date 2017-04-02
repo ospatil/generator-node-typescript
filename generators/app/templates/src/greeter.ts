@@ -8,4 +8,4 @@ export class Greeter {
   public greet() {
     return "Bonjour, " + this.greeting + "!";
   }
-};
+}

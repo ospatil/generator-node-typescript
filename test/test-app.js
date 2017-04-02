@@ -54,6 +54,7 @@ describe('node-typescript:app without gulp', function () {
       'package.json',
       'tsconfig.json',
       'tslint.json',
+      '.travis.yml',
       '.editorconfig',
       '.gitignore',
       'LICENSE',

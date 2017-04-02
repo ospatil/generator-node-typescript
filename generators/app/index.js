@@ -63,6 +63,11 @@ module.exports = yeoman.generators.Base.extend({
           this.destinationPath('gulpfile.js'),
           { appname: _.kebabCase(path.basename(process.cwd())) }
         );
+
+        this.fs.copy(
+          this.templatePath('README_gulp.md'),
+          this.destinationPath('README.md')
+        );
       } else {
         this.fs.copy(
           this.templatePath('_vscode/tasks.json'),
@@ -74,11 +79,21 @@ module.exports = yeoman.generators.Base.extend({
           this.destinationPath('package.json'),
           { appname: _.kebabCase(path.basename(process.cwd())) }
         );
+
+        this.fs.copy(
+          this.templatePath('travis.yml'),
+          this.destinationPath('.travis.yml')
+        );
+
+        this.fs.copy(
+          this.templatePath('README.md'),
+          this.destinationPath('README.md')
+        );
       }
 
       this.fs.copy(
-          this.templatePath('_vscode/settings.json'),
-          this.destinationPath('.vscode/settings.json')
+        this.templatePath('_vscode/settings.json'),
+        this.destinationPath('.vscode/settings.json')
       );
       this.fs.copy(
         this.templatePath('_tsconfig.json'),
@@ -100,10 +115,6 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('LICENSE'),
         this.destinationPath('LICENSE'),
         { year: today.getFullYear().toPrecision(4) }
-      );
-      this.fs.copy(
-        this.templatePath('README.md'),
-        this.destinationPath('README.md')
       );
     }
   },
