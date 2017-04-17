@@ -76,7 +76,7 @@ Available tasks
   clean  Cleans the generated js files from lib directory
   help   Display this help text.
   lint   Lints all TypeScript source files
-  test   Runs the Jasmine test specs [build]
+  test   Runs the mocha test specs [build]
   watch  Watches ts source files and runs build on change
 ```
 
