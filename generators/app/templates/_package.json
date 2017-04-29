@@ -42,7 +42,7 @@
   },
   "nyc": {
     "include": [
-      "src/*.ts"
+      "src/**/*.ts"
     ],
     "exclude": [
       "lib"
