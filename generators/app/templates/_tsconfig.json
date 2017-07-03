@@ -3,6 +3,10 @@
     "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
+    "lib": [
+      "esnext"
+    ],
+    "target": "es2015",
     "noImplicitAny": true,
     "outDir": "./lib",
     "preserveConstEnums": true,
