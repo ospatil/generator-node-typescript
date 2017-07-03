@@ -20,9 +20,7 @@
     "yeoman-generator",
     "typescript",
     "gulp",
-    "tsconfig",
-    "nodejs",
-    "iojs"
+    "nodejs"
   ],
   "dependencies": {
     "chalk": "1.1.1",

@@ -1,13 +1,7 @@
-<% if (isWindows) { %>
-/// <reference path="../node_modules/@types/mocha/index.d.ts" />
-<% } %>
-import index = require("../src/index");
-import * as chai from "chai";
+import test from "ava";
+import * as index from "../src/index";
 
-const expect = chai.expect;
-
-describe("index", () => {
-  it("should provide Greeter", () => {
-    expect(index.Greeter).to.not.be.undefined;
-  });
+test("Should have Greeter available", t => {
+  t.truthy(index.Greeter);
 });
+

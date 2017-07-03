@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "outDir": "lib_test",
+    "declaration": false,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "inlineSourceMap": true
+  },
+  "include": [
+    "test/**/*"
+  ]
+}

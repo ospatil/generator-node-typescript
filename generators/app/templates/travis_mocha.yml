@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - 'node' # use latest stable nodejs version
+  - 'node'
 script:
-  - npm test  # test build to build and run ava tests
-  - npm run coverage  # generate nyc report
+  - npm run build  # build
+  - npm run coverage  # run mocha unit tests with coverage
 after_script:
   - 'cat coverage/lcov.info | ./node_modules/.bin/coveralls' # sends the coverage report to coveralls

@@ -29,18 +29,29 @@ module.exports = yeoman.generators.Base.extend({
     dir: function () {
       this.directory('src', 'src');
 
-      // 2.0.0-beta: copying the spec file needs templating due to the ts-node problem on windows
-      // this.directory('test', 'test');
-      this.fs.copyTpl(
-        this.templatePath('test/greeter-spec.ts'),
-        this.destinationPath('test/greeter-spec.ts'),
-        { isWindows: process.platform === 'win32' }
-      );
-      this.fs.copyTpl(
-        this.templatePath('test/index-spec.ts'),
-        this.destinationPath('test/index-spec.ts'),
-        { isWindows: process.platform === 'win32' }
-      );
+      if (this.options.mocha) {
+        // 2.0.0-beta: copying the spec file needs templating due to the ts-node problem on windows
+        // this.directory('test', 'test');
+        this.fs.copyTpl(
+          this.templatePath('test/greeter-spec_mocha.ts'),
+          this.destinationPath('test/greeter-spec.ts'),
+          { isWindows: process.platform === 'win32' }
+        );
+        this.fs.copyTpl(
+          this.templatePath('test/index-spec_mocha.ts'),
+          this.destinationPath('test/index-spec.ts'),
+          { isWindows: process.platform === 'win32' }
+        );
+      } else {
+        this.fs.copyTpl(
+          this.templatePath('test/greeter-spec.ts'),
+          this.destinationPath('test/greeter-spec.ts')
+        );
+        this.fs.copyTpl(
+          this.templatePath('test/index-spec.ts'),
+          this.destinationPath('test/index-spec.ts')
+        );
+      }
     },
 
     projectfiles: function () {
@@ -74,16 +85,34 @@ module.exports = yeoman.generators.Base.extend({
           this.destinationPath('.vscode/tasks.json')
         );
 
-        this.fs.copyTpl(
-          this.templatePath('_package.json'),
-          this.destinationPath('package.json'),
-          { appname: _.kebabCase(path.basename(process.cwd())) }
-        );
+        if (this.options.mocha) {
+          this.fs.copyTpl(
+            this.templatePath('_package_mocha.json'),
+            this.destinationPath('package.json'),
+            { appname: _.kebabCase(path.basename(process.cwd())) }
+          );
 
-        this.fs.copy(
-          this.templatePath('travis.yml'),
-          this.destinationPath('.travis.yml')
-        );
+          this.fs.copy(
+            this.templatePath('travis_mocha.yml'),
+            this.destinationPath('.travis.yml')
+          );
+        } else {
+          this.fs.copyTpl(
+            this.templatePath('_package.json'),
+            this.destinationPath('package.json'),
+            { appname: _.kebabCase(path.basename(process.cwd())) }
+          );
+
+          this.fs.copy(
+            this.templatePath('travis.yml'),
+            this.destinationPath('.travis.yml')
+          );
+
+          this.fs.copy(
+            this.templatePath('_tsconfig.test.json'),
+            this.destinationPath('tsconfig.test.json')
+          );
+        }
 
         this.fs.copy(
           this.templatePath('README.md'),
@@ -123,8 +152,6 @@ module.exports = yeoman.generators.Base.extend({
     npmInstall: function () {
       var generator = this;
       generator.npmInstall(null, { skipInstall: this.options['skip-install'] }, function () {
-        //generator.spawnCommandSync('typings', ['init']); //typings init
-        //generator.spawnCommandSync('typings', ['install', 'dt~node', '--save', '--global']) //typings install --save dt~node --global
       });
     }
   }
