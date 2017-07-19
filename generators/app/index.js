@@ -1,11 +1,11 @@
 'use strict';
-var yeoman = require('yeoman-generator');
+var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
 var _ = require('lodash');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = Generator.extend({
   initializing: function () {
     var done = this.async();
 
@@ -27,7 +27,10 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     dir: function () {
-      this.directory('src', 'src');
+      this.fs.copy(
+        this.templatePath('src'),
+        this.destinationPath('src')
+      );
 
       if (this.options.mocha) {
         // 2.0.0-beta: copying the spec file needs templating due to the ts-node problem on windows
