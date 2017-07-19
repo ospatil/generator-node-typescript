@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
 const _ = require('lodash');
+const shelljs = require('shelljs');
 
 module.exports = Generator.extend({
   initializing: function () {
@@ -154,8 +155,11 @@ module.exports = Generator.extend({
   install: {
     npmInstall: function () {
       const generator = this;
-      generator.npmInstall(null, { skipInstall: this.options['skip-install'] }, function () {
-      });
+      if (!!shelljs.which('yarn')) {
+        generator.yarnInstall();
+      } else {
+        generator.npmInstall(null, { skipInstall: this.options['skip-install'] });
+      }
     }
   }
 });
