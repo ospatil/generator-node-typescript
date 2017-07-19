@@ -1,9 +1,9 @@
 'use strict';
 
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
-var os = require('os');
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
+const os = require('os');
 
 describe('node-typescript:app with gulp', function () {
   before(function (done) {

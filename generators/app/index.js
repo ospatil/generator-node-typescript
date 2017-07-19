@@ -1,13 +1,13 @@
 'use strict';
-var Generator = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var path = require('path');
-var _ = require('lodash');
+const Generator = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const path = require('path');
+const _ = require('lodash');
 
 module.exports = Generator.extend({
   initializing: function () {
-    var done = this.async();
+    const done = this.async();
 
     // Have Yeoman greet the user.
     this.log(yosay(
@@ -58,7 +58,7 @@ module.exports = Generator.extend({
     },
 
     projectfiles: function () {
-      var today = new Date();
+      const today = new Date();
 
       if (this.options.gulp) {
         this.fs.copy(
@@ -153,7 +153,7 @@ module.exports = Generator.extend({
 
   install: {
     npmInstall: function () {
-      var generator = this;
+      const generator = this;
       generator.npmInstall(null, { skipInstall: this.options['skip-install'] }, function () {
       });
     }
