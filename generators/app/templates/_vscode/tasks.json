@@ -20,7 +20,8 @@
       "group": {
         "kind": "build",
         "isDefault": true
-      }
+      },
+      "problemMatcher":[]
     },
     {
       "type": "npm",
@@ -38,7 +39,8 @@
       "group": {
         "kind": "test",
         "isDefault": true
-      }
+      },
+      "problemMatcher": []
     },
     {
       "type": "npm",
@@ -46,6 +48,6 @@
       "problemMatcher": [
         "$eslint-stylish"
       ]
-    }
+    },
   ]
 }
