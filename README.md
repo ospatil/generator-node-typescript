@@ -44,7 +44,7 @@ Run `npm run` for information on available tasks.
 
 ```sh
  $npm run
-Lifecycle scripts included in node-typescript-demo:
+Lifecycle scripts included in ts-node-ava:
   prepublish
     npm run build
   test
@@ -53,12 +53,12 @@ Lifecycle scripts included in node-typescript-demo:
 available via `npm run-script`:
   clean
     rimraf lib && rimraf coverage && rimraf .nyc_output && rimraf lib_test
-  prettier
+  format
     prettier --write "{src,test}/**/*.ts"
   lint
     tslint --force --format verbose "src/**/*.ts"
   prebuild
-    npm run prettify && npm run clean && npm run lint && echo Using TypeScript && tsc --version
+    npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version
   build
     tsc --pretty
   coverage
@@ -89,12 +89,13 @@ Available tasks
 ## Highlights of the latest release
 
 - I use latest version of **TypeScript**.
-- I use _npm_ to fetch type definitions making life so much easier. You can find more information on [https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/).
+- I use [yarn](https://yarnpkg.com) in place of npm if it is already installed on your machine.
 - I use _ava_ which is a [Futuristic JavaScript test runner](https://github.com/avajs/ava) as testing framework (optionally _mocha_). Also, one of the most important things regarding testing is **you can write tests in TypeScript itself**.
 - I use _prettier_ integrated with _tslint_ to provide no-fuss code formatting and linting.
 - I need **no global dependencies**. Every dependency such as _TypeScript_ and _tslint_ is installed as local dev dependency allowing you to freely use different versions of these for different modules.
 - I provide test coverage support using _nyc_.
-- I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure `build`, `clean`, `lint`, `coverage`, 'prettier' and `test` tasks that you can run using `Run Task` option.
+- I provide nice integration with [VS Code editor](https://code.visualstudio.com/). I configure `build`, `clean`, `lint`, `coverage`, 'format' and `test` tasks that you can run using `Run Task` option.
+- **You can directly run the currently open TypeScript file in VS Code using task `ts-node: Run current file`.** I use [ts-node](https://github.com/TypeStrong/ts-node) to provide this functionality.
 
 ## License
 
