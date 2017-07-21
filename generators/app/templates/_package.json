@@ -19,11 +19,13 @@
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublish": "npm run build",
     "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
-    "build": "tsc --pretty",
+    "build": "tsc --pretty && tsc -p tsconfig.test.json --pretty",
     "test": "npm run clean && tsc -p tsconfig.test.json --pretty && nyc --exclude \"**/*-spec.js\" ava \"**/*-spec.js\" --verbose",
     "coverage": "nyc report --reporter=lcov --reporter=text --reporter=html",
     "watch": "npm run build -- --watch",
-    "watch:test": "npm run test -- --watch"
+    "watch:test:ts": "tsc -p tsconfig.test.json --pretty --watch",
+    "watch:test:ava": "ava \"**/*-spec.js\" --verbose --watch",
+    "watch:test": "run-p watch:test:ts watch:test:ava"
   },
   "dependencies": {
   },
@@ -31,6 +33,7 @@
     "@types/node": "^8.0.0",
     "ava": "^0.20.0",
     "coveralls": "^2.0.0",
+    "npm-run-all": "^4.0.2",
     "nyc": "^10.0.0",
     "prettier": "^1.5.2",
     "rimraf": "^2.0.0",
