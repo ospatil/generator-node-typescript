@@ -44,7 +44,7 @@ gulp.task('build', 'Compiles all TypeScript source files', ['lint'], function (c
   });
 });
 
-gulp.task('test', 'Runs the Jasmine test specs', ['build'], function () {
+gulp.task('test', 'Runs the Mocha test specs', ['build'], function () {
   return gulp.src('test/*.ts')
     .pipe(mocha({
       require: ['ts-node/register']

@@ -4,18 +4,20 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "taskName": "ts-node: Run current file",
+      "taskName": "Run current file",
       "command": "ts-node ${relativeFile}",
       "type": "shell",
       "problemMatcher": []
     },
     {
       "type": "npm",
+      "label": "clean",
       "script": "clean",
       "problemMatcher": []
     },
     {
       "type": "npm",
+      "label": "build",
       "script": "build",
       "group": {
         "kind": "build",
@@ -25,16 +27,19 @@
     },
     {
       "type": "npm",
+      "label": "format",
       "script": "format",
       "problemMatcher": []
     },
     {
       "type": "npm",
+      "label": "coverage",
       "script": "coverage",
       "problemMatcher": []
     },
     {
       "type": "npm",
+      "label": "test",
       "script": "test",
       "group": {
         "kind": "test",
@@ -44,10 +49,11 @@
     },
     {
       "type": "npm",
+      "label": "lint",
       "script": "lint",
       "problemMatcher": [
         "$eslint-stylish"
       ]
-    },
+    }
   ]
 }

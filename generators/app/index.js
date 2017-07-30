@@ -18,7 +18,7 @@ module.exports = Generator.extend({
     this.log(
       chalk.cyan('I simply get down to business of generating, no questions asked!')
       + '\n'
-      + chalk.yellow('Libraries you ask? I use npm (or optionally gulp) as task runner and mocha for testing.')
+      + chalk.yellow('Libraries you ask? I use npm (or optionally gulp) as task runner and jest for testing.')
       + '\n'
       + chalk.gray('Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.')
     );
@@ -27,13 +27,15 @@ module.exports = Generator.extend({
   },
 
   writing: {
-    dir: function () {
+    srcFiles: function () {
       this.fs.copy(
         this.templatePath('src'),
         this.destinationPath('src')
       );
+    },
 
-      if (this.options.mocha) {
+    testFiles: function () {
+      if (this.options.mocha || this.options.gulp) {
         // 2.0.0-beta: copying the spec file needs templating due to the ts-node problem on windows
         // this.directory('test', 'test');
         this.fs.copyTpl(
@@ -46,27 +48,55 @@ module.exports = Generator.extend({
           this.destinationPath('test/index-spec.ts'),
           { isWindows: process.platform === 'win32' }
         );
-      } else {
+      } else if (this.options.ava) {
         this.fs.copyTpl(
-          this.templatePath('test/greeter-spec.ts'),
+          this.templatePath('test/greeter-spec_ava.ts'),
           this.destinationPath('test/greeter-spec.ts')
         );
         this.fs.copyTpl(
-          this.templatePath('test/index-spec.ts'),
+          this.templatePath('test/index-spec_ava.ts'),
           this.destinationPath('test/index-spec.ts')
+        );
+      } else {
+        this.fs.copyTpl(
+          this.templatePath('test/greeter-spec.ts'),
+          this.destinationPath('__tests__/greeter-spec.ts')
+        );
+        this.fs.copyTpl(
+          this.templatePath('test/index-spec.ts'),
+          this.destinationPath('__tests__/index-spec.ts')
         );
       }
     },
 
-    projectfiles: function () {
-      const today = new Date();
-
+    vsCodeFiles: function () {
       if (this.options.gulp) {
         this.fs.copy(
           this.templatePath('_vscode/tasks_gulp.json'),
           this.destinationPath('.vscode/tasks.json')
         );
+      } else {
+        this.fs.copy(
+          this.templatePath('_vscode/tasks.json'),
+          this.destinationPath('.vscode/tasks.json')
+        );
+      }
+      this.fs.copy(
+        this.templatePath('_vscode/settings.json'),
+        this.destinationPath('.vscode/settings.json')
+      );
+      if (!(this.options.gulp || this.options.mocha || this.options.ava)) { // copy launch.json only for default jest configuration
+        this.fs.copy(
+          this.templatePath('_vscode/launch.json'),
+          this.destinationPath('.vscode/launch.json')
+        );
+      }
+    },
 
+    rootFiles: function () {
+      const today = new Date();
+
+      if (this.options.gulp) { // copy gulp files
         this.fs.copyTpl(
           this.templatePath('_package_gulp.json'),
           this.destinationPath('package.json'),
@@ -84,50 +114,48 @@ module.exports = Generator.extend({
           this.destinationPath('README.md')
         );
       } else {
-        this.fs.copy(
-          this.templatePath('_vscode/tasks.json'),
-          this.destinationPath('.vscode/tasks.json')
-        );
-
-        if (this.options.mocha) {
+        if (this.options.mocha) { // copy mocha files
           this.fs.copyTpl(
             this.templatePath('_package_mocha.json'),
             this.destinationPath('package.json'),
             { appname: _.kebabCase(path.basename(process.cwd())) }
           );
-
           this.fs.copy(
             this.templatePath('travis_mocha.yml'),
             this.destinationPath('.travis.yml')
           );
-        } else {
+        } if (this.options.ava) { // copy ava files
+          this.fs.copyTpl(
+            this.templatePath('_package_ava.json'),
+            this.destinationPath('package.json'),
+            { appname: _.kebabCase(path.basename(process.cwd())) }
+          );
+          this.fs.copy(
+            this.templatePath('travis_ava.yml'),
+            this.destinationPath('.travis.yml')
+          );
+          this.fs.copy(
+            this.templatePath('_tsconfig.test.json'),
+            this.destinationPath('tsconfig.test.json')
+          );
+        } else { // copy files for default jest configuration
           this.fs.copyTpl(
             this.templatePath('_package.json'),
             this.destinationPath('package.json'),
             { appname: _.kebabCase(path.basename(process.cwd())) }
           );
-
           this.fs.copy(
             this.templatePath('travis.yml'),
             this.destinationPath('.travis.yml')
           );
-
-          this.fs.copy(
-            this.templatePath('_tsconfig.test.json'),
-            this.destinationPath('tsconfig.test.json')
-          );
         }
-
+        // copy readme for non-gulp configurations
         this.fs.copy(
           this.templatePath('README.md'),
           this.destinationPath('README.md')
         );
       }
-
-      this.fs.copy(
-        this.templatePath('_vscode/settings.json'),
-        this.destinationPath('.vscode/settings.json')
-      );
+      // copy files for default jest configuration
       this.fs.copy(
         this.templatePath('_tsconfig.json'),
         this.destinationPath('tsconfig.json')

@@ -1,7 +1,6 @@
-import test from 'ava';
-import { Greeter } from "../src/greeter";
+import { Greeter } from '../src/greeter';
 
-test("Should greet with message", t => {
-  const greeter = new Greeter("friend");
-  t.is(greeter.greet(), "Bonjour, friend!");
+test('Should greet with message', () => {
+  const greeter = new Greeter('friend');
+  expect(greeter.greet()).toBe('Bonjour, friend!');
 });

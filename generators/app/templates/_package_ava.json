@@ -4,11 +4,7 @@
   "description": "<%= appname %>",
   "license": "MIT",
   "repository": "",
-  "author": {
-    "name": "",
-    "email": "",
-    "url": ""
-  },
+  "author": "",
   "keywords": [
     ""
   ],
@@ -18,28 +14,29 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "clean": "rimraf lib && rimraf coverage",
-    "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
+    "clean": "rimraf lib && rimraf coverage && rimraf .nyc_output && rimraf lib_test",
+    "format": "prettier --write \"{src,test}/**/*.ts\"",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublish": "npm run build",
     "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
-    "build": "tsc --pretty",
-    "test": "jest",
-    "coverage": "jest --coverage",
+    "build": "tsc --pretty && tsc -p tsconfig.test.json --pretty",
+    "test": "npm run clean && tsc -p tsconfig.test.json --pretty && nyc --exclude \"**/*-spec.js\" ava \"**/*-spec.js\" --verbose",
+    "coverage": "nyc report --reporter=lcov --reporter=text --reporter=html",
     "watch": "npm run build -- --watch",
-    "watch:test": "jest --watch"
+    "watch:test:ts": "tsc -p tsconfig.test.json --pretty --watch",
+    "watch:test:ava": "ava \"**/*-spec.js\" --verbose --watch",
+    "watch:test": "run-p watch:test:ts watch:test:ava"
   },
   "dependencies": {
   },
   "devDependencies": {
-    "@types/jest": "^20.0.5",
     "@types/node": "^8.0.0",
+    "ava": "^0.20.0",
     "coveralls": "^2.0.0",
-    "jest": "^20.0.4",
-    "jest-environment-node-debug": "^2.0.0",
+    "npm-run-all": "^4.0.2",
+    "nyc": "^10.0.0",
     "prettier": "^1.5.2",
     "rimraf": "^2.0.0",
-    "ts-jest": "^20.0.7",
     "ts-node": "^3.2.0",
     "tslint": "^5.0.0",
     "tslint-config-prettier": "^1.1.0",
@@ -48,15 +45,9 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "jest": {
-    "transform": {
-      ".(ts)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "testEnvironment": "node"
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
   }
 }
