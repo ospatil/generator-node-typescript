@@ -49,7 +49,9 @@ You can choose to use _ava_ as your test framework using command - `$yo node-typ
   ### Integration with VS Code
 - I configure `build`, `clean`, `lint`, `coverage`, `format` and `test` tasks that you can run using `Run Task` option.
 - You can directly run currently open source file using task `Run current file`. I use [ts-node](https://github.com/TypeStrong/ts-node) to provide this functionality.
-- You can debug currently open source file using `Debug file` launch configuration. You can also debug currently open test file using `Debug test` launch configuration without the need of compiling it first.
+- You can debug currently open source file using `Debug file` launch configuration. You can also debug currently open test file using `Debug test` launch configuration without the need of compiling it first. Here is the preview -
+
+  ![TypeScript debugging in VS Code](./img/vscode-ts-debug.gif)
 
 ## License
 
