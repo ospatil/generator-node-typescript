@@ -183,7 +183,7 @@ module.exports = Generator.extend({
   install: {
     npmInstall: function () {
       const generator = this;
-      if (!!shelljs.which('yarn')) {
+      if (shelljs.which('yarn')) {
         generator.yarnInstall();
       } else {
         generator.npmInstall(null, { skipInstall: this.options['skip-install'] });
