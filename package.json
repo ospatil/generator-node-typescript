@@ -11,6 +11,7 @@
     "url": "https://github.com/ospatil"
   },
   "scripts": {
+    "pretest": "eslint .",
     "test": "mocha"
   },
   "files": [
@@ -30,6 +31,7 @@
     "yosay": "^2.0.0"
   },
   "devDependencies": {
+    "eslint": "^4.4.0",
     "mocha": "^3.4.2",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.7.0"
