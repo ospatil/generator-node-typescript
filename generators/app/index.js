@@ -124,7 +124,7 @@ module.exports = Generator.extend({
             this.templatePath('travis_mocha.yml'),
             this.destinationPath('.travis.yml')
           );
-        } if (this.options.ava) { // copy ava files
+        } else if (this.options.ava) { // copy ava files
           this.fs.copyTpl(
             this.templatePath('_package_ava.json'),
             this.destinationPath('package.json'),
