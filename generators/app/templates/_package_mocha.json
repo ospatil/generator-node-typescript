@@ -38,7 +38,7 @@
     "ts-node": "^3.0.0",
     "tslint": "^5.0.0",
     "tslint-config-prettier": "^1.1.0",
-    "typescript": "^2.0.0",
+    "typescript": "^2.3.0",
     "coveralls": "^2.0.0"
   },
   "engines": {
