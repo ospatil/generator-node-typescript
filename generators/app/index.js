@@ -23,6 +23,10 @@ module.exports = Generator.extend({
       + chalk.gray('Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.')
     );
 
+    if (this.options.gulp) {
+      throw new Error('Gulp option is no longer supported.');
+    }
+
     done();
   },
 
