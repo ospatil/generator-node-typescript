@@ -4,7 +4,7 @@
     "target": "es5",
     "outDir": "lib_test",
     "declaration": false,
-    "noImplicitAny": true,
+    "strict": true,
     "removeComments": true,
     "inlineSourceMap": true
   },
