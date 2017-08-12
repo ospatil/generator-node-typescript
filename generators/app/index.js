@@ -14,13 +14,18 @@ module.exports = Generator.extend({
     this.log(yosay(
       'Welcome to the minimal ' + chalk.red('Node TypeScript') + ' generator!'
     ));
-
+    
     this.log(
       chalk.cyan('I simply get down to business of generating, no questions asked!')
       + '\n'
       + chalk.yellow('Libraries you ask? I use npm as task runner and jest for testing.')
       + '\n'
       + chalk.gray('Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.')
+    );
+
+    this.composeWith(
+      require.resolve('../classlib'),
+      Object.assign({ arguments: ['Greeter'] }, this.options)
     );
 
     if (this.options.gulp) {
@@ -31,47 +36,6 @@ module.exports = Generator.extend({
   },
 
   writing: {
-    srcFiles: function () {
-      this.fs.copy(
-        this.templatePath('src'),
-        this.destinationPath('src')
-      );
-    },
-
-    testFiles: function () {
-      if (this.options.mocha) {
-        // 2.0.0-beta: copying the spec file needs templating due to the ts-node problem on windows
-        // this.directory('test', 'test');
-        this.fs.copyTpl(
-          this.templatePath('test/greeter-spec_mocha.ts'),
-          this.destinationPath('test/greeter-spec.ts'),
-          { isWindows: process.platform === 'win32' }
-        );
-        this.fs.copyTpl(
-          this.templatePath('test/index-spec_mocha.ts'),
-          this.destinationPath('test/index-spec.ts'),
-          { isWindows: process.platform === 'win32' }
-        );
-      } else if (this.options.ava) {
-        this.fs.copyTpl(
-          this.templatePath('test/greeter-spec_ava.ts'),
-          this.destinationPath('test/greeter-spec.ts')
-        );
-        this.fs.copyTpl(
-          this.templatePath('test/index-spec_ava.ts'),
-          this.destinationPath('test/index-spec.ts')
-        );
-      } else {
-        this.fs.copyTpl(
-          this.templatePath('test/greeter-spec.ts'),
-          this.destinationPath('__tests__/greeter-spec.ts')
-        );
-        this.fs.copyTpl(
-          this.templatePath('test/index-spec.ts'),
-          this.destinationPath('__tests__/index-spec.ts')
-        );
-      }
-    },
 
     vsCodeFiles: function () {
       this.fs.copy(
