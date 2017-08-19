@@ -36,6 +36,12 @@ You can choose to use _mocha_ as your test framework using command - `$yo node-t
 
 You can choose to use _ava_ as your test framework using command - `$yo node-typescript --ava`
 
+Generate a new class and test file.
+
+```sh
+$yo node-typescript:classlib MyNewClass [--mocha | --ava]
+```
+
 ## Highlights of the latest release
 
 - I use latest version of **TypeScript**.
