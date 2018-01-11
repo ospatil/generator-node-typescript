@@ -32,14 +32,14 @@
   "dependencies": {
   },
   "devDependencies": {
-    "@types/jest": "^20.0.5",
+    "@types/jest": "^22.0.1",
     "@types/node": "^8.0.0",
     "coveralls": "^2.0.0",
-    "jest": "^20.0.4",
+    "jest": "^22.0.4",
     "jest-environment-node-debug": "^2.0.0",
     "prettier": "^1.5.2",
     "rimraf": "^2.0.0",
-    "ts-jest": "^20.0.7",
+    "ts-jest": "^22.0.1",
     "ts-node": "^3.2.0",
     "tslint": "^5.0.0",
     "tslint-config-prettier": "^1.1.0",
