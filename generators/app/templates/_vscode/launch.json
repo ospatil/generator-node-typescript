@@ -21,7 +21,7 @@
       "type": "node",
       "request": "launch",
       "name": "Debug test",
-      "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "args": [
         "--findRelatedTests",
         "${relativeFile}",
