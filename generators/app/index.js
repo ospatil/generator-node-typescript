@@ -7,20 +7,28 @@ const _ = require('lodash');
 const shelljs = require('shelljs');
 
 module.exports = Generator.extend({
-  initializing: function () {
+  initializing: function() {
     const done = this.async();
 
     // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the minimal ' + chalk.red('Node TypeScript') + ' generator!'
-    ));
-    
     this.log(
-      chalk.cyan('I simply get down to business of generating, no questions asked!')
-      + '\n'
-      + chalk.yellow('Libraries you ask? I use npm as task runner and jest for testing.')
-      + '\n'
-      + chalk.gray('Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.')
+      yosay(
+        'Welcome to the minimal ' + chalk.red('Node TypeScript') + ' generator!'
+      )
+    );
+
+    this.log(
+      chalk.cyan(
+        'I simply get down to business of generating, no questions asked!'
+      ) +
+        '\n' +
+        chalk.yellow(
+          'Libraries you ask? I use npm as task runner and jest for testing.'
+        ) +
+        '\n' +
+        chalk.gray(
+          'Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.'
+        )
     );
 
     this.composeWith(
@@ -36,8 +44,7 @@ module.exports = Generator.extend({
   },
 
   writing: {
-
-    vsCodeFiles: function () {
+    vsCodeFiles: function() {
       this.fs.copy(
         this.templatePath('_vscode/tasks.json'),
         this.destinationPath('.vscode/tasks.json')
@@ -46,7 +53,8 @@ module.exports = Generator.extend({
         this.templatePath('_vscode/settings.json'),
         this.destinationPath('.vscode/settings.json')
       );
-      if (!(this.options.mocha || this.options.ava)) { // copy launch.json only for default jest configuration
+      if (!(this.options.mocha || this.options.ava)) {
+        // copy launch.json only for default jest configuration
         this.fs.copy(
           this.templatePath('_vscode/launch.json'),
           this.destinationPath('.vscode/launch.json')
@@ -54,10 +62,11 @@ module.exports = Generator.extend({
       }
     },
 
-    rootFiles: function () {
+    rootFiles: function() {
       const today = new Date();
 
-      if (this.options.mocha) { // copy mocha files
+      if (this.options.mocha) {
+        // copy mocha files
         this.fs.copyTpl(
           this.templatePath('_package_mocha.json'),
           this.destinationPath('package.json'),
@@ -67,7 +76,8 @@ module.exports = Generator.extend({
           this.templatePath('travis_mocha.yml'),
           this.destinationPath('.travis.yml')
         );
-      } else if (this.options.ava) { // copy ava files
+      } else if (this.options.ava) {
+        // copy ava files
         this.fs.copyTpl(
           this.templatePath('_package_ava.json'),
           this.destinationPath('package.json'),
@@ -81,7 +91,8 @@ module.exports = Generator.extend({
           this.templatePath('_tsconfig.test.json'),
           this.destinationPath('tsconfig.test.json')
         );
-      } else { // copy files for default jest configuration
+      } else {
+        // copy files for default jest configuration
         this.fs.copyTpl(
           this.templatePath('_package.json'),
           this.destinationPath('package.json'),
@@ -113,6 +124,10 @@ module.exports = Generator.extend({
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore')
       );
+      this.fs.copy(
+        this.templatePath('npmignore'),
+        this.destinationPath('.npmignore')
+      );
       this.fs.copyTpl(
         this.templatePath('LICENSE'),
         this.destinationPath('LICENSE'),
@@ -122,12 +137,14 @@ module.exports = Generator.extend({
   },
 
   install: {
-    npmInstall: function () {
+    npmInstall: function() {
       const generator = this;
       if (shelljs.which('yarn')) {
         generator.yarnInstall();
       } else {
-        generator.npmInstall(null, { skipInstall: this.options['skip-install'] });
+        generator.npmInstall(null, {
+          skipInstall: this.options['skip-install']
+        });
       }
     }
   }

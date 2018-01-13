@@ -5,9 +5,10 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
-describe('node-typescript:app with mocha', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/app'))
+describe('node-typescript:app with mocha', function() {
+  before(function(done) {
+    helpers
+      .run(path.join(__dirname, '../generators/app'))
       .withOptions({
         skipInstall: true,
         mocha: true
@@ -15,7 +16,7 @@ describe('node-typescript:app with mocha', function () {
       .on('end', done);
   });
 
-  it('creates project files', function () {
+  it('creates project files', function() {
     assert.file([
       '.vscode/tasks.json',
       '.vscode/settings.json',
@@ -29,15 +30,17 @@ describe('node-typescript:app with mocha', function () {
       '.travis.yml',
       '.editorconfig',
       '.gitignore',
+      '.npmignore',
       'LICENSE',
       'README.md'
     ]);
   });
 });
 
-describe('node-typescript:app with ava', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/app'))
+describe('node-typescript:app with ava', function() {
+  before(function(done) {
+    helpers
+      .run(path.join(__dirname, '../generators/app'))
       .withOptions({
         skipInstall: true,
         ava: true
@@ -45,7 +48,7 @@ describe('node-typescript:app with ava', function () {
       .on('end', done);
   });
 
-  it('creates project files', function () {
+  it('creates project files', function() {
     assert.file([
       '.vscode/tasks.json',
       '.vscode/settings.json',
@@ -60,22 +63,24 @@ describe('node-typescript:app with ava', function () {
       '.travis.yml',
       '.editorconfig',
       '.gitignore',
+      '.npmignore',
       'LICENSE',
       'README.md'
     ]);
   });
 });
 
-describe('node-typescript:app with jest - default configuration', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/app'))
+describe('node-typescript:app with jest - default configuration', function() {
+  before(function(done) {
+    helpers
+      .run(path.join(__dirname, '../generators/app'))
       .withOptions({
         skipInstall: true
       })
       .on('end', done);
   });
 
-  it('creates project files', function () {
+  it('creates project files', function() {
     assert.file([
       '.vscode/tasks.json',
       '.vscode/settings.json',
@@ -90,6 +95,7 @@ describe('node-typescript:app with jest - default configuration', function () {
       '.travis.yml',
       '.editorconfig',
       '.gitignore',
+      '.npmignore',
       'LICENSE',
       'README.md'
     ]);
