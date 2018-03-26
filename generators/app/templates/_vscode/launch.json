@@ -24,9 +24,7 @@
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "args": [
         "--findRelatedTests",
-        "${relativeFile}",
-        "--env",
-        "jest-environment-node-debug"
+        "${relativeFile}"
       ],
       "cwd": "${workspaceRoot}"
     }
