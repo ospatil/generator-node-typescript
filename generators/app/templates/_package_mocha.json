@@ -25,19 +25,19 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/chai": "^3.0.0",
-    "@types/mocha": "^2.0.0",
-    "@types/node": "^8.0.0",
-    "chai": "^3.0.0",
-    "mocha": "^3.0.0",
-    "nyc": "^10.0.0",
-    "prettier": "^1.5.2",
-    "rimraf": "^2.0.0",
-    "ts-node": "^3.0.0",
-    "tslint": "^5.0.0",
-    "tslint-config-prettier": "^1.1.0",
-    "typescript": "^2.3.0",
-    "coveralls": "^2.0.0"
+    "@types/chai": "^4.1.6",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.11.4",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.1.1",
+    "coveralls": "^3.0.2"
   },
   "engines": {
     "node": ">=6.0.0"
