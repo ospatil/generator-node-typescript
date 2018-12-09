@@ -1,6 +1,6 @@
 {
   "name": "generator-node-typescript",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "description": "A minimal Yeoman Generator for creating NodeJS modules using TypeScript",
   "license": "MIT",
   "main": "app/index.js",
