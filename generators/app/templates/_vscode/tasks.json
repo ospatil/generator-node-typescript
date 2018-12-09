@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "taskName": "Run current file",
+      "label": "Run current file",
       "command": "ts-node ${relativeFile}",
       "type": "shell",
       "problemMatcher": []
@@ -23,7 +23,7 @@
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher":[]
+      "problemMatcher": []
     },
     {
       "type": "npm",

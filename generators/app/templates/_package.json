@@ -9,18 +9,20 @@
     "email": "",
     "url": ""
   },
-  "keywords": [""],
-  "files": ["lib"],
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "keywords": [
+    ""
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index",
+  "types": "lib/index",
   "scripts": {
     "clean": "rimraf lib && rimraf coverage",
-    "format":
-      "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
+    "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublishOnly": "npm run build",
-    "prebuild":
-      "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
+    "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
     "build": "tsc --pretty",
     "test": "jest",
     "coverage": "jest --coverage",
@@ -42,14 +44,9 @@
     "typescript": "^3.1.1"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "jest": {
-    "transform": {
-      ".(ts)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
-    "moduleFileExtensions": ["ts", "js"],
-    "testEnvironment": "node"
+    "preset": "ts-jest"
   }
 }

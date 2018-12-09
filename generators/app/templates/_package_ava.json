@@ -11,8 +11,8 @@
   "files": [
     "lib"
   ],
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib/index",
+  "types": "lib/index",
   "scripts": {
     "clean": "rimraf lib && rimraf coverage && rimraf .nyc_output && rimraf lib_test",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
@@ -27,8 +27,7 @@
     "watch:test:ava": "ava \"**/*-spec.js\" --verbose --watch",
     "watch:test": "run-p watch:test:ts watch:test:ava"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^10.11.4",
     "ava": "^0.25.0",
@@ -43,7 +42,7 @@
     "typescript": "^3.1.1"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "ava": {
     "require": [

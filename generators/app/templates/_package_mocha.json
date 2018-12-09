@@ -5,21 +5,22 @@
   "license": "MIT",
   "repository": "",
   "author": "",
-  "keywords": [""],
-  "files": ["lib"],
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "keywords": [
+    ""
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index",
+  "types": "lib/index",
   "scripts": {
     "clean": "rimraf lib",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublishOnly": "npm run build",
-    "build":
-      "npm run format && npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
-    "test":
-      "npm run build && mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
-    "coverage":
-      "nyc --include=\"src/**/*.ts\" --reporter=text --reporter=html --reporter=lcov mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
+    "build": "npm run format && npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
+    "test": "npm run build && mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
+    "coverage": "nyc --include=\"src/**/*.ts\" --reporter=text --reporter=html --reporter=lcov mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
     "watch": "npm run build -- --watch",
     "watch:test": "npm run test -- --watch"
   },
@@ -40,13 +41,21 @@
     "coveralls": "^3.0.2"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "nyc": {
-    "include": ["src/**/*.ts"],
-    "exclude": ["lib"],
-    "extension": [".ts"],
-    "require": ["ts-node/register"],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "lib"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
     "reporter": [],
     "all": true
   }

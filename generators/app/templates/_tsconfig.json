@@ -7,14 +7,18 @@
       "esnext"
     ],
     "target": "es2015",
-    "strict": true,
     "outDir": "./lib",
-    "preserveConstEnums": true,
     "removeComments": true,
     "inlineSourceMap": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+    "inlineSources": true,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src/**/*"
