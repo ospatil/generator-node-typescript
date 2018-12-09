@@ -23,18 +23,18 @@
     "nodejs"
   ],
   "dependencies": {
-    "chalk": "^2.0.1",
-    "lodash": "^4.17.4",
-    "shelljs": "^0.7.8",
+    "chalk": "^2.4.1",
+    "lodash": "^4.17.11",
+    "shelljs": "^0.8.3",
     "yeoman-generator": "^1.1.1",
-    "yosay": "^2.0.0"
+    "yosay": "^2.0.2"
   },
   "devDependencies": {
-    "eslint": "^4.4.0",
-    "fs-extra": "^4.0.0",
-    "mocha": "^3.4.2",
-    "yeoman-assert": "^3.0.0",
-    "yeoman-test": "^1.7.0"
+    "eslint": "^5.10.0",
+    "fs-extra": "^7.0.1",
+    "mocha": "^5.2.0",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^1.9.1"
   },
   "preferGlobal": true,
   "publishConfig": {
