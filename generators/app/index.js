@@ -7,7 +7,7 @@ const _ = require('lodash');
 const shelljs = require('shelljs');
 
 module.exports = Generator.extend({
-  initializing: function() {
+  initializing: function () {
     const done = this.async();
 
     // Have Yeoman greet the user.
@@ -21,14 +21,14 @@ module.exports = Generator.extend({
       chalk.cyan(
         'I simply get down to business of generating, no questions asked!'
       ) +
-        '\n' +
-        chalk.yellow(
-          'Libraries you ask? I use npm as task runner and jest for testing.'
-        ) +
-        '\n' +
-        chalk.gray(
-          'Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.'
-        )
+      '\n' +
+      chalk.yellow(
+        'Libraries you ask? I use npm as task runner and jest for testing.'
+      ) +
+      '\n' +
+      chalk.gray(
+        'Can you change these? Of course, it\'s your code. I get out of the way after scaffolding.'
+      )
     );
 
     this.composeWith(
@@ -44,7 +44,7 @@ module.exports = Generator.extend({
   },
 
   writing: {
-    vsCodeFiles: function() {
+    vsCodeFiles: function () {
       this.fs.copy(
         this.templatePath('_vscode/tasks.json'),
         this.destinationPath('.vscode/tasks.json')
@@ -62,9 +62,7 @@ module.exports = Generator.extend({
       }
     },
 
-    rootFiles: function() {
-      const today = new Date();
-
+    rootFiles: function () {
       if (this.options.mocha) {
         // copy mocha files
         this.fs.copyTpl(
@@ -129,15 +127,25 @@ module.exports = Generator.extend({
         this.destinationPath('.npmignore')
       );
       this.fs.copyTpl(
-        this.templatePath('LICENSE'),
-        this.destinationPath('LICENSE'),
-        { year: today.getFullYear().toPrecision(4) }
+        this.templatePath('docker-compose.yml'),
+        this.destinationPath('docker-compose.yml'),
+        { appname: _.kebabCase(path.basename(process.cwd())) }
+      );
+      this.fs.copyTpl(
+        this.templatePath('docker-compose.builder.yml'),
+        this.destinationPath('docker-compose.builder.yml'),
+        { appname: _.kebabCase(path.basename(process.cwd())) }
+      );
+      this.fs.copyTpl(
+        this.templatePath('Makefile'),
+        this.destinationPath('Makefile'),
+        { appname: _.kebabCase(path.basename(process.cwd())) }
       );
     }
   },
 
   install: {
-    npmInstall: function() {
+    npmInstall: function () {
       const generator = this;
       if (shelljs.which('yarn')) {
         generator.yarnInstall();

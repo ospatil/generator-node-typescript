@@ -5,8 +5,8 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
-describe('node-typescript:app with mocha', function() {
-  before(function(done) {
+describe('node-typescript:app with mocha', function () {
+  before(function (done) {
     helpers
       .run(path.join(__dirname, '../generators/app'))
       .withOptions({
@@ -16,7 +16,7 @@ describe('node-typescript:app with mocha', function() {
       .on('end', done);
   });
 
-  it('creates project files', function() {
+  it('creates project files', function () {
     assert.file([
       '.vscode/tasks.json',
       '.vscode/settings.json',
@@ -31,14 +31,16 @@ describe('node-typescript:app with mocha', function() {
       '.editorconfig',
       '.gitignore',
       '.npmignore',
-      'LICENSE',
-      'README.md'
+      'README.md',
+      'docker-compose.yml',
+      'docker-compose.builder.yml',
+      'Makefile'
     ]);
   });
 });
 
-describe('node-typescript:app with ava', function() {
-  before(function(done) {
+describe('node-typescript:app with ava', function () {
+  before(function (done) {
     helpers
       .run(path.join(__dirname, '../generators/app'))
       .withOptions({
@@ -48,7 +50,7 @@ describe('node-typescript:app with ava', function() {
       .on('end', done);
   });
 
-  it('creates project files', function() {
+  it('creates project files', function () {
     assert.file([
       '.vscode/tasks.json',
       '.vscode/settings.json',
@@ -64,14 +66,16 @@ describe('node-typescript:app with ava', function() {
       '.editorconfig',
       '.gitignore',
       '.npmignore',
-      'LICENSE',
-      'README.md'
+      'README.md',
+      'docker-compose.yml',
+      'docker-compose.builder.yml',
+      'Makefile'
     ]);
   });
 });
 
-describe('node-typescript:app with jest - default configuration', function() {
-  before(function(done) {
+describe('node-typescript:app with jest - default configuration', function () {
+  before(function (done) {
     helpers
       .run(path.join(__dirname, '../generators/app'))
       .withOptions({
@@ -80,7 +84,7 @@ describe('node-typescript:app with jest - default configuration', function() {
       .on('end', done);
   });
 
-  it('creates project files', function() {
+  it('creates project files', function () {
     assert.file([
       '.vscode/tasks.json',
       '.vscode/settings.json',
@@ -96,8 +100,10 @@ describe('node-typescript:app with jest - default configuration', function() {
       '.editorconfig',
       '.gitignore',
       '.npmignore',
-      'LICENSE',
-      'README.md'
+      'README.md',
+      'docker-compose.yml',
+      'docker-compose.builder.yml',
+      'Makefile'
     ]);
   });
 });
