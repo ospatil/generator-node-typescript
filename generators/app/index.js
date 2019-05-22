@@ -6,6 +6,8 @@ const path = require('path');
 const _ = require('lodash');
 const shelljs = require('shelljs');
 
+const BUILD_PATH = 'build';
+
 module.exports = Generator.extend({
   initializing: function () {
     const done = this.async();
@@ -57,7 +59,8 @@ module.exports = Generator.extend({
         // copy launch.json only for default jest configuration
         this.fs.copy(
           this.templatePath('_vscode/launch.json'),
-          this.destinationPath('.vscode/launch.json')
+          this.destinationPath('.vscode/launch.json'),
+          { buildpath: BUILD_PATH }
         );
       }
     },
@@ -68,7 +71,10 @@ module.exports = Generator.extend({
         this.fs.copyTpl(
           this.templatePath('_package_mocha.json'),
           this.destinationPath('package.json'),
-          { appname: _.kebabCase(path.basename(process.cwd())) }
+          {
+            appname: _.kebabCase(path.basename(process.cwd())),
+            buildpath: BUILD_PATH
+          }
         );
         this.fs.copy(
           this.templatePath('travis_mocha.yml'),
@@ -79,7 +85,10 @@ module.exports = Generator.extend({
         this.fs.copyTpl(
           this.templatePath('_package_ava.json'),
           this.destinationPath('package.json'),
-          { appname: _.kebabCase(path.basename(process.cwd())) }
+          {
+            appname: _.kebabCase(path.basename(process.cwd())),
+            buildpath: BUILD_PATH
+          }
         );
         this.fs.copy(
           this.templatePath('travis_ava.yml'),
@@ -94,7 +103,10 @@ module.exports = Generator.extend({
         this.fs.copyTpl(
           this.templatePath('_package.json'),
           this.destinationPath('package.json'),
-          { appname: _.kebabCase(path.basename(process.cwd())) }
+          {
+            appname: _.kebabCase(path.basename(process.cwd())),
+            buildpath: BUILD_PATH
+          }
         );
         this.fs.copy(
           this.templatePath('travis.yml'),
@@ -104,11 +116,13 @@ module.exports = Generator.extend({
       // copy files common for all configurations
       this.fs.copy(
         this.templatePath('README.md'),
-        this.destinationPath('README.md')
+        this.destinationPath('README.md'),
+        { buildpath: BUILD_PATH }
       );
       this.fs.copy(
         this.templatePath('_tsconfig.json'),
-        this.destinationPath('tsconfig.json')
+        this.destinationPath('tsconfig.json'),
+        { buildpath: BUILD_PATH }
       );
       this.fs.copy(
         this.templatePath('_tslint.json'),
@@ -120,11 +134,13 @@ module.exports = Generator.extend({
       );
       this.fs.copy(
         this.templatePath('gitignore'),
-        this.destinationPath('.gitignore')
+        this.destinationPath('.gitignore'),
+        { buildpath: BUILD_PATH }
       );
       this.fs.copy(
         this.templatePath('npmignore'),
-        this.destinationPath('.npmignore')
+        this.destinationPath('.npmignore'),
+        { buildpath: BUILD_PATH }
       );
       this.fs.copyTpl(
         this.templatePath('docker-compose.yml'),

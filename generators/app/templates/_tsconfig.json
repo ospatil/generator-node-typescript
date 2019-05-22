@@ -7,7 +7,7 @@
       "esnext"
     ],
     "target": "es2015",
-    "outDir": "./build",
+    "outDir": "./<%= buildpath %>",
     "removeComments": true,
     "inlineSourceMap": true,
     "inlineSources": true,

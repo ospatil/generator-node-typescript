@@ -9,15 +9,15 @@
     ""
   ],
   "files": [
-    "build"
+    "<%= buildpath %>"
   ],
-  "main": "build/index",
-  "types": "build/index",
+  "main": "<%= buildpath %>/index",
+  "types": "<%= buildpath %>/index",
   "scripts": {
-    "clean": "rimraf build && rimraf coverage && rimraf .nyc_output && rimraf lib_test",
+    "clean": "rimraf <%= buildpath %> && rimraf coverage && rimraf .nyc_output && rimraf lib_test",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run <%= buildpath %>",
     "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
     "build": "tsc --pretty && tsc -p tsconfig.test.json --pretty",
     "test": "npm run clean && tsc -p tsconfig.test.json --pretty && nyc --exclude \"**/*-spec.js\" ava \"**/*-spec.js\" --verbose",

@@ -13,16 +13,16 @@
     ""
   ],
   "files": [
-    "build"
+    "<%= buildpath %>"
   ],
-  "main": "build/index",
-  "types": "build/index",
+  "main": "<%= buildpath %>/index",
+  "types": "<%= buildpath %>/index",
   "scripts": {
-    "clean": "rimraf build && rimraf coverage",
+    "clean": "rimraf <%= buildpath %> && rimraf coverage",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublishOnly": "npm run build",
-    "start": "node ./build/index.js",
+    "start": "node ./<%= buildpath %>/index.js",
     "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
     "build": "tsc --pretty",
     "build:watch": "nodemon --legacy-watch src/index.ts",
