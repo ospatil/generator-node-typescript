@@ -13,12 +13,12 @@
     ""
   ],
   "files": [
-    "lib"
+    "build"
   ],
-  "main": "lib/index",
-  "types": "lib/index",
+  "main": "build/index",
+  "types": "build/index",
   "scripts": {
-    "clean": "rimraf lib && rimraf coverage",
+    "clean": "rimraf build && rimraf coverage",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublishOnly": "npm run build",

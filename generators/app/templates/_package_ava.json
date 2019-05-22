@@ -9,12 +9,12 @@
     ""
   ],
   "files": [
-    "lib"
+    "build"
   ],
-  "main": "lib/index",
-  "types": "lib/index",
+  "main": "build/index",
+  "types": "build/index",
   "scripts": {
-    "clean": "rimraf lib && rimraf coverage && rimraf .nyc_output && rimraf lib_test",
+    "clean": "rimraf build && rimraf coverage && rimraf .nyc_output && rimraf lib_test",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublishOnly": "npm run build",
