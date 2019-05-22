@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+
+  base:
+    image: node:10
+    volumes:
+      - <%= appname %>-nodemodules:/usr/work/node_modules
+      - .:/usr/work/
+    working_dir: /usr/work/
+
+  install:
+    extends:
+      service: base
+    command: npm i
+
+  build:
+    extends:
+      service: base
+    command: npm run build
+
+  start:
+    extends:
+      service: base
+    command: npm run start
+
+volumes:
+  <%= appname %>-nodemodules:
+    external: true
