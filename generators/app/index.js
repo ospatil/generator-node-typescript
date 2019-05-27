@@ -133,6 +133,11 @@ module.exports = Generator.extend({
         this.destinationPath('.editorconfig')
       );
       this.fs.copy(
+        this.templatePath('dockerignore'),
+        this.destinationPath('.dockerignore'),
+        { buildpath: BUILD_PATH }
+      );
+      this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore'),
         { buildpath: BUILD_PATH }
