@@ -19,5 +19,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*-spec.ts", "<%= buildpath %>"]
+  "exclude": ["node_modules", "<%= buildpath %>"]
 }
