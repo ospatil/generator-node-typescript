@@ -8,13 +8,13 @@
       "type": "node",
       "request": "launch",
       "name": "Debug file",
-      "program": "${workspaceRoot}/lib/${fileBasenameNoExtension}.js",
+      "program": "${workspaceRoot}/<%= buildpath %>/${fileBasenameNoExtension}.js",
       "cwd": "${workspaceRoot}",
       "sourceMaps": true,
       "smartStep": true,
-      "preLaunchTask": "build",
+      "preLaunchTask": "<%= buildpath %>",
       "outFiles": [
-        "${workspaceRoot}/lib/*.js"
+        "${workspaceRoot}/<%= buildpath %>/*.js"
       ]
     },
     {

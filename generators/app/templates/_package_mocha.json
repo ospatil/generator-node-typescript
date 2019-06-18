@@ -9,12 +9,12 @@
     ""
   ],
   "files": [
-    "lib"
+    "<%= buildpath %>"
   ],
-  "main": "lib/index",
-  "types": "lib/index",
+  "main": "<%= buildpath %>/index",
+  "types": "<%= buildpath %>/index",
   "scripts": {
-    "clean": "rimraf lib",
+    "clean": "rimraf <%= buildpath %>",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublishOnly": "npm run build",
@@ -48,7 +48,7 @@
       "src/**/*.ts"
     ],
     "exclude": [
-      "lib"
+      "<%= buildpath %>"
     ],
     "extension": [
       ".ts"
